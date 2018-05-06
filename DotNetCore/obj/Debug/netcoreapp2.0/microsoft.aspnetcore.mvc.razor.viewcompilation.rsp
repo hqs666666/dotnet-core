@@ -1,0 +1,11 @@
+/Users/hqs/Project/DotNetCore/DotNetCore
+--output-path=obj/Debug/netcoreapp2.0/
+--application-name=DotNetCore
+--content-root=/Users/hqs/Project/DotNetCore/DotNetCore
+--file=/Users/hqs/Project/DotNetCore/DotNetCore/Pages/About.cshtml
+--file=/Users/hqs/Project/DotNetCore/DotNetCore/Pages/Error.cshtml
+--file=/Users/hqs/Project/DotNetCore/DotNetCore/Pages/Index.cshtml
+--file=/Users/hqs/Project/DotNetCore/DotNetCore/Pages/_Layout.cshtml
+--file=/Users/hqs/Project/DotNetCore/DotNetCore/Pages/_ValidationScriptsPartial.cshtml
+--file=/Users/hqs/Project/DotNetCore/DotNetCore/Pages/_ViewImports.cshtml
+--file=/Users/hqs/Project/DotNetCore/DotNetCore/Pages/_ViewStart.cshtml

@@ -1,0 +1,21 @@
+﻿@page
+@model AboutModel
+@{
+    ViewData["Title"] = "About";
+}
+<h2>@ViewData["Title"]</h2>
+
+
+@using (Html.BeginForm("OnPost", null, FormMethod.Post))
+{
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+    @Html.AntiForgeryToken()
+
+    <p>Id:@Html.EditorFor(model=>model.user.Id)</p>
+    <p>UserName:@Html.EditorFor(model => model.user.UserName)</p>
+    <p>Password:@Html.EditorFor(model => model.user.Password)</p>
+    <p>Email:@Html.EditorFor(model => model.user.Email)</p>
+    <p><button type="submit">提交</button></p>
+}
+
+
