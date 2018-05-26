@@ -1,0 +1,13 @@
+D:\project\.net core\DotNetCore\Lib\DotNetCore.FrameWork\bin\Debug\netcoreapp2.0\DotNetCore.FrameWork.deps.json
+D:\project\.net core\DotNetCore\Lib\DotNetCore.FrameWork\bin\Debug\netcoreapp2.0\DotNetCore.FrameWork.dll
+D:\project\.net core\DotNetCore\Lib\DotNetCore.FrameWork\bin\Debug\netcoreapp2.0\DotNetCore.FrameWork.pdb
+D:\project\.net core\DotNetCore\Lib\DotNetCore.FrameWork\bin\Debug\netcoreapp2.0\DotNetCore.Core.Base.dll
+D:\project\.net core\DotNetCore\Lib\DotNetCore.FrameWork\bin\Debug\netcoreapp2.0\DotNetCore.Domain.dll
+D:\project\.net core\DotNetCore\Lib\DotNetCore.FrameWork\bin\Debug\netcoreapp2.0\DotNetCore.Core.Base.pdb
+D:\project\.net core\DotNetCore\Lib\DotNetCore.FrameWork\bin\Debug\netcoreapp2.0\DotNetCore.Domain.pdb
+D:\project\.net core\DotNetCore\Lib\DotNetCore.FrameWork\obj\Debug\netcoreapp2.0\DotNetCore.FrameWork.csprojResolveAssemblyReference.cache
+D:\project\.net core\DotNetCore\Lib\DotNetCore.FrameWork\obj\Debug\netcoreapp2.0\DotNetCore.FrameWork.csproj.CoreCompileInputs.cache
+D:\project\.net core\DotNetCore\Lib\DotNetCore.FrameWork\obj\Debug\netcoreapp2.0\DotNetCore.FrameWork.AssemblyInfoInputs.cache
+D:\project\.net core\DotNetCore\Lib\DotNetCore.FrameWork\obj\Debug\netcoreapp2.0\DotNetCore.FrameWork.AssemblyInfo.cs
+D:\project\.net core\DotNetCore\Lib\DotNetCore.FrameWork\obj\Debug\netcoreapp2.0\DotNetCore.FrameWork.dll
+D:\project\.net core\DotNetCore\Lib\DotNetCore.FrameWork\obj\Debug\netcoreapp2.0\DotNetCore.FrameWork.pdb
