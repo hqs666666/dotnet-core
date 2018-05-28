@@ -36,7 +36,14 @@ namespace DotNetCore.SSO
             services.AddDependencyRegister();
             services.AddTfDI();
 
-            services.AddCors();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllOrigins",
+                    builder =>
+                    {
+                        builder.AllowAnyOrigin();
+                    });
+            });
 
             services.AddMvc()
                     //解决时间格式包含 T 字符
@@ -57,8 +64,7 @@ namespace DotNetCore.SSO
             app.UseTfDI();
 
             //跨域，必须放在UseMvc()前
-            app.UseCors(builder => builder.WithOrigins("http://localhost:5001")
-                                          .AllowAnyHeader().AllowAnyMethod());
+            app.UseCors("AllowAllOrigins");
 
             app.UseMvc();
         }

@@ -664,36 +664,28 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\JinLin\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "/Users/hqs/.nuget/packages/": {},
+    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
-    "restoreSettings": {
-      "hideWarningsAndErrors": true
-    },
     "restore": {
-      "projectUniqueName": "D:\\project\\.net core\\DotNetCore\\Lib\\DotNetCore.Domain\\DotNetCore.Domain.csproj",
+      "projectUniqueName": "/Users/hqs/git/dotnet-core/DotNetCore/Lib/DotNetCore.Domain/DotNetCore.Domain.csproj",
       "projectName": "DotNetCore.Domain",
-      "projectPath": "D:\\project\\.net core\\DotNetCore\\Lib\\DotNetCore.Domain\\DotNetCore.Domain.csproj",
-      "packagesPath": "C:\\Users\\JinLin\\.nuget\\packages\\",
-      "outputPath": "D:\\project\\.net core\\DotNetCore\\Lib\\DotNetCore.Domain\\obj\\",
+      "projectPath": "/Users/hqs/git/dotnet-core/DotNetCore/Lib/DotNetCore.Domain/DotNetCore.Domain.csproj",
+      "packagesPath": "/Users/hqs/.nuget/packages/",
+      "outputPath": "/Users/hqs/git/dotnet-core/DotNetCore/Lib/DotNetCore.Domain/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\JinLin\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
+        "/Users/hqs/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -713,7 +705,7 @@
           "Microsoft.NETCore.App": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "[2.0.0, )",
+            "version": "2.0.0",
             "autoReferenced": true
           }
         },

@@ -1,15 +1,30 @@
-D:\project\.net core\DotNetCore\Lib\DotNetCore.Core\bin\Debug\netcoreapp2.0\DotNetCore.Core.deps.json
-D:\project\.net core\DotNetCore\Lib\DotNetCore.Core\bin\Debug\netcoreapp2.0\DotNetCore.Core.dll
-D:\project\.net core\DotNetCore\Lib\DotNetCore.Core\bin\Debug\netcoreapp2.0\DotNetCore.Core.pdb
-D:\project\.net core\DotNetCore\Lib\DotNetCore.Core\bin\Debug\netcoreapp2.0\DotNetCore.Core.Base.dll
-D:\project\.net core\DotNetCore\Lib\DotNetCore.Core\bin\Debug\netcoreapp2.0\DotNetCore.Domain.dll
-D:\project\.net core\DotNetCore\Lib\DotNetCore.Core\bin\Debug\netcoreapp2.0\DotNetCore.FrameWork.dll
-D:\project\.net core\DotNetCore\Lib\DotNetCore.Core\bin\Debug\netcoreapp2.0\DotNetCore.Core.Base.pdb
-D:\project\.net core\DotNetCore\Lib\DotNetCore.Core\bin\Debug\netcoreapp2.0\DotNetCore.Domain.pdb
-D:\project\.net core\DotNetCore\Lib\DotNetCore.Core\bin\Debug\netcoreapp2.0\DotNetCore.FrameWork.pdb
-D:\project\.net core\DotNetCore\Lib\DotNetCore.Core\obj\Debug\netcoreapp2.0\DotNetCore.Core.csprojResolveAssemblyReference.cache
-D:\project\.net core\DotNetCore\Lib\DotNetCore.Core\obj\Debug\netcoreapp2.0\DotNetCore.Core.csproj.CoreCompileInputs.cache
-D:\project\.net core\DotNetCore\Lib\DotNetCore.Core\obj\Debug\netcoreapp2.0\DotNetCore.Core.AssemblyInfoInputs.cache
-D:\project\.net core\DotNetCore\Lib\DotNetCore.Core\obj\Debug\netcoreapp2.0\DotNetCore.Core.AssemblyInfo.cs
-D:\project\.net core\DotNetCore\Lib\DotNetCore.Core\obj\Debug\netcoreapp2.0\DotNetCore.Core.dll
-D:\project\.net core\DotNetCore\Lib\DotNetCore.Core\obj\Debug\netcoreapp2.0\DotNetCore.Core.pdb
+D:/project/.net core/DotNetCore/Lib/DotNetCore.Core/bin/Debug/netcoreapp2.0/DotNetCore.Core.deps.json
+D:/project/.net core/DotNetCore/Lib/DotNetCore.Core/bin/Debug/netcoreapp2.0/DotNetCore.Core.dll
+D:/project/.net core/DotNetCore/Lib/DotNetCore.Core/bin/Debug/netcoreapp2.0/DotNetCore.Core.pdb
+D:/project/.net core/DotNetCore/Lib/DotNetCore.Core/bin/Debug/netcoreapp2.0/DotNetCore.Core.Base.dll
+D:/project/.net core/DotNetCore/Lib/DotNetCore.Core/bin/Debug/netcoreapp2.0/DotNetCore.Domain.dll
+D:/project/.net core/DotNetCore/Lib/DotNetCore.Core/bin/Debug/netcoreapp2.0/DotNetCore.FrameWork.dll
+D:/project/.net core/DotNetCore/Lib/DotNetCore.Core/bin/Debug/netcoreapp2.0/DotNetCore.Core.Base.pdb
+D:/project/.net core/DotNetCore/Lib/DotNetCore.Core/bin/Debug/netcoreapp2.0/DotNetCore.Domain.pdb
+D:/project/.net core/DotNetCore/Lib/DotNetCore.Core/bin/Debug/netcoreapp2.0/DotNetCore.FrameWork.pdb
+D:/project/.net core/DotNetCore/Lib/DotNetCore.Core/obj/Debug/netcoreapp2.0/DotNetCore.Core.csprojResolveAssemblyReference.cache
+D:/project/.net core/DotNetCore/Lib/DotNetCore.Core/obj/Debug/netcoreapp2.0/DotNetCore.Core.csproj.CoreCompileInputs.cache
+D:/project/.net core/DotNetCore/Lib/DotNetCore.Core/obj/Debug/netcoreapp2.0/DotNetCore.Core.AssemblyInfoInputs.cache
+D:/project/.net core/DotNetCore/Lib/DotNetCore.Core/obj/Debug/netcoreapp2.0/DotNetCore.Core.AssemblyInfo.cs
+D:/project/.net core/DotNetCore/Lib/DotNetCore.Core/obj/Debug/netcoreapp2.0/DotNetCore.Core.dll
+D:/project/.net core/DotNetCore/Lib/DotNetCore.Core/obj/Debug/netcoreapp2.0/DotNetCore.Core.pdb
+/Users/hqs/git/dotnet-core/DotNetCore/Lib/DotNetCore.Core/obj/Debug/netcoreapp2.0/DotNetCore.Core.dll
+/Users/hqs/git/dotnet-core/DotNetCore/Lib/DotNetCore.Core/obj/Debug/netcoreapp2.0/DotNetCore.Core.pdb
+/Users/hqs/git/dotnet-core/DotNetCore/Lib/DotNetCore.Core/bin/Debug/netcoreapp2.0/DotNetCore.Core.deps.json
+/Users/hqs/git/dotnet-core/DotNetCore/Lib/DotNetCore.Core/bin/Debug/netcoreapp2.0/DotNetCore.Core.dll
+/Users/hqs/git/dotnet-core/DotNetCore/Lib/DotNetCore.Core/bin/Debug/netcoreapp2.0/DotNetCore.Core.pdb
+/Users/hqs/git/dotnet-core/DotNetCore/Lib/DotNetCore.Core/bin/Debug/netcoreapp2.0/DotNetCore.Core.Base.dll
+/Users/hqs/git/dotnet-core/DotNetCore/Lib/DotNetCore.Core/bin/Debug/netcoreapp2.0/DotNetCore.Domain.dll
+/Users/hqs/git/dotnet-core/DotNetCore/Lib/DotNetCore.Core/bin/Debug/netcoreapp2.0/DotNetCore.FrameWork.dll
+/Users/hqs/git/dotnet-core/DotNetCore/Lib/DotNetCore.Core/bin/Debug/netcoreapp2.0/DotNetCore.Core.Base.pdb
+/Users/hqs/git/dotnet-core/DotNetCore/Lib/DotNetCore.Core/bin/Debug/netcoreapp2.0/DotNetCore.Domain.pdb
+/Users/hqs/git/dotnet-core/DotNetCore/Lib/DotNetCore.Core/bin/Debug/netcoreapp2.0/DotNetCore.FrameWork.pdb
+/Users/hqs/git/dotnet-core/DotNetCore/Lib/DotNetCore.Core/obj/Debug/netcoreapp2.0/DotNetCore.Core.csprojResolveAssemblyReference.cache
+/Users/hqs/git/dotnet-core/DotNetCore/Lib/DotNetCore.Core/obj/Debug/netcoreapp2.0/DotNetCore.Core.csproj.CoreCompileInputs.cache
+/Users/hqs/git/dotnet-core/DotNetCore/Lib/DotNetCore.Core/obj/Debug/netcoreapp2.0/DotNetCore.Core.AssemblyInfoInputs.cache
+/Users/hqs/git/dotnet-core/DotNetCore/Lib/DotNetCore.Core/obj/Debug/netcoreapp2.0/DotNetCore.Core.AssemblyInfo.cs
