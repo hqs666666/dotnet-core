@@ -16,7 +16,7 @@ namespace DotNetCore.SSO.Controllers
 
         public JsonResult Index()
         {
-            return Json("mUserService.Get()");
+            return Json(mUserService.Get());
         }
     }
 }

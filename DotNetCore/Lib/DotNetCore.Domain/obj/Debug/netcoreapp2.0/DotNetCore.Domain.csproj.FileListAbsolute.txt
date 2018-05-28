@@ -14,3 +14,11 @@ D:/project/.net core/DotNetCore/Lib/DotNetCore.Domain/obj/Debug/netcoreapp2.0/Do
 /Users/hqs/git/dotnet-core/DotNetCore/Lib/DotNetCore.Domain/obj/Debug/netcoreapp2.0/DotNetCore.Domain.AssemblyInfo.cs
 /Users/hqs/git/dotnet-core/DotNetCore/Lib/DotNetCore.Domain/obj/Debug/netcoreapp2.0/DotNetCore.Domain.dll
 /Users/hqs/git/dotnet-core/DotNetCore/Lib/DotNetCore.Domain/obj/Debug/netcoreapp2.0/DotNetCore.Domain.pdb
+D:\project\Git\dotnet-core\DotNetCore\Lib\DotNetCore.Domain\bin\Debug\netcoreapp2.0\DotNetCore.Domain.deps.json
+D:\project\Git\dotnet-core\DotNetCore\Lib\DotNetCore.Domain\bin\Debug\netcoreapp2.0\DotNetCore.Domain.dll
+D:\project\Git\dotnet-core\DotNetCore\Lib\DotNetCore.Domain\bin\Debug\netcoreapp2.0\DotNetCore.Domain.pdb
+D:\project\Git\dotnet-core\DotNetCore\Lib\DotNetCore.Domain\obj\Debug\netcoreapp2.0\DotNetCore.Domain.csproj.CoreCompileInputs.cache
+D:\project\Git\dotnet-core\DotNetCore\Lib\DotNetCore.Domain\obj\Debug\netcoreapp2.0\DotNetCore.Domain.AssemblyInfoInputs.cache
+D:\project\Git\dotnet-core\DotNetCore\Lib\DotNetCore.Domain\obj\Debug\netcoreapp2.0\DotNetCore.Domain.AssemblyInfo.cs
+D:\project\Git\dotnet-core\DotNetCore\Lib\DotNetCore.Domain\obj\Debug\netcoreapp2.0\DotNetCore.Domain.dll
+D:\project\Git\dotnet-core\DotNetCore\Lib\DotNetCore.Domain\obj\Debug\netcoreapp2.0\DotNetCore.Domain.pdb

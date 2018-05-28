@@ -664,28 +664,36 @@
     ]
   },
   "packageFolders": {
-    "/Users/hqs/.nuget/packages/": {},
-    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
+    "C:\\Users\\JinLin\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
+    "restoreSettings": {
+      "hideWarningsAndErrors": true
+    },
     "restore": {
-      "projectUniqueName": "/Users/hqs/git/dotnet-core/DotNetCore/Lib/DotNetCore.Domain/DotNetCore.Domain.csproj",
+      "projectUniqueName": "D:\\project\\Git\\dotnet-core\\DotNetCore\\Lib\\DotNetCore.Domain\\DotNetCore.Domain.csproj",
       "projectName": "DotNetCore.Domain",
-      "projectPath": "/Users/hqs/git/dotnet-core/DotNetCore/Lib/DotNetCore.Domain/DotNetCore.Domain.csproj",
-      "packagesPath": "/Users/hqs/.nuget/packages/",
-      "outputPath": "/Users/hqs/git/dotnet-core/DotNetCore/Lib/DotNetCore.Domain/obj/",
+      "projectPath": "D:\\project\\Git\\dotnet-core\\DotNetCore\\Lib\\DotNetCore.Domain\\DotNetCore.Domain.csproj",
+      "packagesPath": "C:\\Users\\JinLin\\.nuget\\packages\\",
+      "outputPath": "D:\\project\\Git\\dotnet-core\\DotNetCore\\Lib\\DotNetCore.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/Users/hqs/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\JinLin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -705,7 +713,7 @@
           "Microsoft.NETCore.App": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "2.0.0",
+            "version": "[2.0.0, )",
             "autoReferenced": true
           }
         },

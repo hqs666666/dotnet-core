@@ -31,7 +31,7 @@ namespace DotNetCore.Api
                     });
 
             //add sqlserver
-            services.AddDbContext<DataContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<DataContext>(options => options.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
 
             //add DI
             services.AddDependencyRegister();
@@ -39,7 +39,14 @@ namespace DotNetCore.Api
             services.AddTfDI();
 
             //跨域
-            services.AddCors();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllOrigins",
+                    builder =>
+                    {
+                        builder.AllowAnyOrigin();
+                    });
+            });
 
             //添加授权过滤器
             services.AddMvcCore(option => { option.Filters.Add(typeof(CustomerAuthorizationFilter)); })
@@ -61,8 +68,7 @@ namespace DotNetCore.Api
             app.UseTfDI();//依赖注入扩展方法
 
             //跨域，必须放在UseMvc()前
-            app.UseCors(builder => builder.WithOrigins("http://localhost:5002")
-                                          .AllowAnyHeader().AllowAnyMethod());
+            app.UseCors("AllowAllOrigins");
 
             app.UseMvc();
         }

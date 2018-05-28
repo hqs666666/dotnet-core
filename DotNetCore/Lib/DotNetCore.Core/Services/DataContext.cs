@@ -13,10 +13,10 @@ namespace DotNetCore.Core.Services
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Domain.User.User>().ToTable("SYS.USER");
-            modelBuilder.Entity<UserProfile>().ToTable("SYS.USERPROFILE");
-            modelBuilder.Entity<UserRole>().ToTable("SYS.USERROLE");
-            modelBuilder.Entity<Role>().ToTable("SYS.ROLE");
+            modelBuilder.Entity<Domain.User.User>().ToTable("sys_user");
+            modelBuilder.Entity<UserProfile>().ToTable("sys_userprofile");
+            modelBuilder.Entity<UserRole>().ToTable("sys_user_role");
+            modelBuilder.Entity<Role>().ToTable("sys_role");
         }
 
         public override int SaveChanges()

@@ -29,8 +29,8 @@ namespace DotNetCore.SSO
                     .AddResourceOwnerValidator<ResourceOwnerPasswordValidator>()
                     .AddProfileService<ProfileService>();
 
-            //add sqlserver
-            services.AddDbContext<DataContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            //add mysql
+            services.AddDbContext<DataContext>(options => options.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
 
             //add DI
             services.AddDependencyRegister();
@@ -41,7 +41,7 @@ namespace DotNetCore.SSO
                 options.AddPolicy("AllowAllOrigins",
                     builder =>
                     {
-                        builder.AllowAnyOrigin();
+                        builder.AllowAnyOrigin().AllowAnyMethod();
                     });
             });
 
@@ -65,6 +65,14 @@ namespace DotNetCore.SSO
 
             //跨域，必须放在UseMvc()前
             app.UseCors("AllowAllOrigins");
+
+            app.Use(async (context, next) =>
+            {
+                context.Response.Headers["Access-Control-Allow-Origin"] = "*";
+                context.Response.Headers["Access-Control-Allow-Headers"] = "X-Requested-With";
+                context.Response.Headers["Access-Control-Allow-Method"] = "GET, POST, PUT, PATCH, DELETE, OPTIONS";
+                await next();
+            });
 
             app.UseMvc();
         }

@@ -78,9 +78,19 @@ namespace DotNetCore.Core.Services.User
             lUserProfile.UserType = (int)UserType.Common;
             mUserProfileDbSet.Add(lUserProfile);
 
+            var lRoleId = mRoleDbSet.FirstOrDefault(p => p.Name == AppConstants.ROLE_REGISTER_USER)?.Id;
+            if (string.IsNullOrEmpty(lRoleId))
+            {
+                var lRole = Create<Role>();
+                lRole.Name = AppConstants.ROLE_REGISTER_USER;
+                lRole.DisplayName = "注册用户";
+                mRoleDbSet.Add(lRole);
+                lRoleId = lRole.Id;
+            }
+
             var lUserRole = Create<UserRole>();
             lUserRole.UserId = lUser.Id;
-            lUserRole.RoleId = mRoleDbSet.FirstOrDefault(p => p.Name == AppConstants.ROLE_REGISTER_USER)?.Id;
+            lUserRole.RoleId = lRoleId;
             mUserRoleDbSet.Add(lUserRole);
 
             return SaveChanges();

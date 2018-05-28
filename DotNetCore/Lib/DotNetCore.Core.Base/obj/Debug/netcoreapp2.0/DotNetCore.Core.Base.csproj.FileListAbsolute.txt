@@ -24,3 +24,14 @@ D:/project/.net core/DotNetCore/Lib/DotNetCore.Core.Base/obj/Debug/netcoreapp2.0
 /Users/hqs/git/dotnet-core/DotNetCore/Lib/DotNetCore.Core.Base/bin/Debug/netcoreapp2.0/DotNetCore.Core.Base.pdb
 /Users/hqs/git/dotnet-core/DotNetCore/Lib/DotNetCore.Core.Base/bin/Debug/netcoreapp2.0/DotNetCore.Domain.dll
 /Users/hqs/git/dotnet-core/DotNetCore/Lib/DotNetCore.Core.Base/bin/Debug/netcoreapp2.0/DotNetCore.Domain.pdb
+D:\project\Git\dotnet-core\DotNetCore\Lib\DotNetCore.Core.Base\bin\Debug\netcoreapp2.0\DotNetCore.Core.Base.deps.json
+D:\project\Git\dotnet-core\DotNetCore\Lib\DotNetCore.Core.Base\bin\Debug\netcoreapp2.0\DotNetCore.Core.Base.dll
+D:\project\Git\dotnet-core\DotNetCore\Lib\DotNetCore.Core.Base\bin\Debug\netcoreapp2.0\DotNetCore.Core.Base.pdb
+D:\project\Git\dotnet-core\DotNetCore\Lib\DotNetCore.Core.Base\bin\Debug\netcoreapp2.0\DotNetCore.Domain.dll
+D:\project\Git\dotnet-core\DotNetCore\Lib\DotNetCore.Core.Base\bin\Debug\netcoreapp2.0\DotNetCore.Domain.pdb
+D:\project\Git\dotnet-core\DotNetCore\Lib\DotNetCore.Core.Base\obj\Debug\netcoreapp2.0\DotNetCore.Core.Base.csprojResolveAssemblyReference.cache
+D:\project\Git\dotnet-core\DotNetCore\Lib\DotNetCore.Core.Base\obj\Debug\netcoreapp2.0\DotNetCore.Core.Base.csproj.CoreCompileInputs.cache
+D:\project\Git\dotnet-core\DotNetCore\Lib\DotNetCore.Core.Base\obj\Debug\netcoreapp2.0\DotNetCore.Core.Base.AssemblyInfoInputs.cache
+D:\project\Git\dotnet-core\DotNetCore\Lib\DotNetCore.Core.Base\obj\Debug\netcoreapp2.0\DotNetCore.Core.Base.AssemblyInfo.cs
+D:\project\Git\dotnet-core\DotNetCore\Lib\DotNetCore.Core.Base\obj\Debug\netcoreapp2.0\DotNetCore.Core.Base.dll
+D:\project\Git\dotnet-core\DotNetCore\Lib\DotNetCore.Core.Base\obj\Debug\netcoreapp2.0\DotNetCore.Core.Base.pdb
