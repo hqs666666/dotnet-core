@@ -32,18 +32,18 @@ namespace DotNetCore.SSO
             //add mysql
             services.AddDbContext<DataContext>(options => options.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
 
+            //add cors
+            services.AddCors(options =>
+            {
+                options.AddPolicy("api", policy =>
+                {
+                    policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().AllowCredentials();
+                });
+            });
+
             //add DI
             services.AddDependencyRegister();
             services.AddTfDI();
-
-            services.AddCors(options =>
-            {
-                options.AddPolicy("AllowAllOrigins",
-                    builder =>
-                    {
-                        builder.AllowAnyOrigin().AllowAnyMethod();
-                    });
-            });
 
             services.AddMvc()
                     //解决时间格式包含 T 字符
@@ -58,21 +58,12 @@ namespace DotNetCore.SSO
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors("api");
+
             app.UseIdentityServer();
 
             //依赖注入扩展方法，实现简单的隐式依赖注入
             app.UseTfDI();
-
-            //跨域，必须放在UseMvc()前
-            app.UseCors("AllowAllOrigins");
-
-            app.Use(async (context, next) =>
-            {
-                context.Response.Headers["Access-Control-Allow-Origin"] = "*";
-                context.Response.Headers["Access-Control-Allow-Headers"] = "X-Requested-With";
-                context.Response.Headers["Access-Control-Allow-Method"] = "GET, POST, PUT, PATCH, DELETE, OPTIONS";
-                await next();
-            });
 
             app.UseMvc();
         }

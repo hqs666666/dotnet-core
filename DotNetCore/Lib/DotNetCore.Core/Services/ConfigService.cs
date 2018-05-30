@@ -24,5 +24,7 @@ namespace DotNetCore.Core.Services
         public string PasswordSecret => AppSettings.Configuration["AppSettings:Secret2"];
 
         public string PasswordKey => AppSettings.Configuration["Encryption:PasswordKey"];
+
+        public string ImageType => AppSettings.Configuration["FileType:Image"];
     }
 }

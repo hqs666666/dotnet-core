@@ -2,14 +2,11 @@
 using DotNetCore.Core.Base.Services.User;
 using DotNetCore.FrameWork.Attribute;
 using DotNetCore.FrameWork.Controller;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DotNetCore.Api.Controllers
 {
-    [Route("api/[controller]")]
-    [AllowAnonymous]
-    //[CustomerAuthorize(AppConstants.ROLE_REGISTER_USER)]
+    [CustomerAuthorize(AppConstants.ROLE_REGISTER_USER)]
     public class ValuesController : BaseController
     {
         private readonly IUserService mUserService;
@@ -18,10 +15,11 @@ namespace DotNetCore.Api.Controllers
         {
             mUserService = userService;
         }
-        [HttpGet]
+        [HttpGet("api/values")]
         public IActionResult Get()
         {
             return new JsonResult(mUserService.Get());
         }
+
     }
 }

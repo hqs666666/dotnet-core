@@ -50,7 +50,7 @@ namespace DotNetCore.Core.Services.User
         public IList<string> GetRole(string userId)
         {
             var lRoleIds = mUserRoleDbSet.Where(p => p.UserId == userId).Select(p => p.RoleId);
-            return mRoleDbSet.Where(p => lRoleIds.Contains(p.Id)).Select(p => p.DisplayName).ToList();
+            return mRoleDbSet.Where(p => lRoleIds.Contains(p.Id)).Select(p => p.Name).ToList();
         }
 
         public ResultMsg Register(RegisterDto dto)

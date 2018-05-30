@@ -33,10 +33,11 @@ namespace DotNetCore.SSO.Identity
             var lResult = mUserService.ValidUser(context.UserName, context.Password);
             if (lResult.Result)
             {
+                var lUser = (UserProfile)lResult.Data;
                 context.Result = new GrantValidationResult(
-                    subject: context.UserName,
+                    subject: lUser.Id,
                     authenticationMethod: "custom",
-                    claims: GetUserClaims((UserProfile)lResult.Data));
+                    claims: GetUserClaims(lUser));
             }
             else
             {

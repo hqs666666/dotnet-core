@@ -17,5 +17,6 @@ namespace DotNetCore.Core.Base.Services
         string PasswordClientId { get; }
         string PasswordSecret { get; }
         string PasswordKey { get; }
+        string ImageType { get; }
     }
 }

@@ -44,7 +44,7 @@ namespace DotNetCore.SSO
                 {
                     ClientId = AppSettings.Configuration["AppSettings:ClientId1"],
                     AllowedGrantTypes = GrantTypes.ClientCredentials,
-
+                    AccessTokenLifetime = 900,
                     ClientSecrets =
                     {
                         new Secret(AppSettings.Configuration["AppSettings:Secret1"].Sha256())
@@ -61,7 +61,7 @@ namespace DotNetCore.SSO
 
                     ClientId = AppSettings.Configuration["AppSettings:ClientId2"],
                     AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
-
+                    AccessTokenLifetime = 900,
                     ClientSecrets =
                     {
                         new Secret(AppSettings.Configuration["AppSettings:Secret2"].Sha256())

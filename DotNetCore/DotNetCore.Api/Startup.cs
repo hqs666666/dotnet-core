@@ -1,12 +1,15 @@
-﻿using DotNetCore.Api.App_Start;
+﻿using System.IO;
+using DotNetCore.Api.App_Start;
 using DotNetCore.Core.Services;
 using DotNetCore.FrameWork.Filter;
 using DotNetCore.FrameWork.Utils;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 
 namespace DotNetCore.Api
 {
@@ -33,20 +36,18 @@ namespace DotNetCore.Api
             //add sqlserver
             services.AddDbContext<DataContext>(options => options.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
 
-            //add DI
-            services.AddDependencyRegister();
-
-            services.AddTfDI();
-
-            //跨域
+            //add cors
             services.AddCors(options =>
             {
-                options.AddPolicy("AllowAllOrigins",
-                    builder =>
-                    {
-                        builder.AllowAnyOrigin();
-                    });
+                options.AddPolicy("api", policy =>
+                {
+                    policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().AllowCredentials();
+                });
             });
+
+            //add DI
+            services.AddDependencyRegister();
+            services.AddTfDI();
 
             //添加授权过滤器
             services.AddMvcCore(option => { option.Filters.Add(typeof(CustomerAuthorizationFilter)); })
@@ -67,8 +68,13 @@ namespace DotNetCore.Api
 
             app.UseTfDI();//依赖注入扩展方法
 
-            //跨域，必须放在UseMvc()前
-            app.UseCors("AllowAllOrigins");
+            app.UseCors("api");
+
+            //app.UseStaticFiles(new StaticFileOptions()
+            //{
+            //    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"Static/Files")),
+            //    RequestPath = new PathString("/src")
+            //});
 
             app.UseMvc();
         }

@@ -22,3 +22,4 @@ D:\project\Git\dotnet-core\DotNetCore\Lib\DotNetCore.Domain\obj\Debug\netcoreapp
 D:\project\Git\dotnet-core\DotNetCore\Lib\DotNetCore.Domain\obj\Debug\netcoreapp2.0\DotNetCore.Domain.AssemblyInfo.cs
 D:\project\Git\dotnet-core\DotNetCore\Lib\DotNetCore.Domain\obj\Debug\netcoreapp2.0\DotNetCore.Domain.dll
 D:\project\Git\dotnet-core\DotNetCore\Lib\DotNetCore.Domain\obj\Debug\netcoreapp2.0\DotNetCore.Domain.pdb
+D:\project\Git\dotnet-core\DotNetCore\Lib\DotNetCore.Domain\obj\Debug\netcoreapp2.0\DotNetCore.Domain.csprojResolveAssemblyReference.cache

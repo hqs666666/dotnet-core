@@ -13,7 +13,9 @@ using DotNetCore.Core.Base;
 using DotNetCore.Core.Base.DTOS.User;
 using DotNetCore.Core.Base.Services.User;
 using DotNetCore.Domain.User;
+using DotNetCore.FrameWork.Attribute;
 using DotNetCore.FrameWork.Controller;
+using IdentityServer4;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -22,6 +24,7 @@ using Microsoft.AspNetCore.Http;
 namespace DotNetCore.SSO.Controllers
 {
     [AllowAnonymous]
+    [SecurityHeaders]
     public class AccountController : BaseController
     {
         #region DI
@@ -39,6 +42,7 @@ namespace DotNetCore.SSO.Controllers
 
         #endregion
 
+        [Produces("application/json")]
         [HttpPost]
         [Route("api/Login")]
         public async Task<IActionResult> LoginAsync([FromBody]LoginDto login)
@@ -82,8 +86,8 @@ namespace DotNetCore.SSO.Controllers
         [Authorize]
         public async Task<IActionResult> Logout()
         {
-            await HttpContext.SignOutAsync();
-            return Ok(CreateResultMsg(UserId));
+            await HttpContext.SignOutAsync(IdentityServerConstants.DefaultCookieAuthenticationScheme);
+            return Ok(CreateResultMsg(IsAuthenticated));
         }
     }
 }
