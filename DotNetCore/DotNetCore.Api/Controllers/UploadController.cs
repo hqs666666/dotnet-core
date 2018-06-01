@@ -14,7 +14,6 @@ using DotNetCore.Core.Base;
 using DotNetCore.Core.Base.Services;
 using DotNetCore.FrameWork.Controller;
 using DotNetCore.FrameWork.Utils;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -24,7 +23,6 @@ namespace DotNetCore.Api.Controllers
 {
     [Produces("application/json")]
     [Consumes("application/json", "multipart/form-data")]
-    [AllowAnonymous]
     public class UploadController : BaseController
     {
         #region Cotr
@@ -42,15 +40,14 @@ namespace DotNetCore.Api.Controllers
         #endregion
 
         [HttpPost("upload/img")]
-        public async Task<IActionResult> UploadImg(IFormFile files)
+        public async Task<IActionResult> UploadImg(IFormFile file)
         {
             try
             {
-                var lSize = files.Length;
-                if (lSize > 5 * 1024 * 1024)
+                if (file.Length > 5242880)
                     return Ok(CreateErrorResultMsg(ApiErrorCode.Exception, "图片不得大于5M"));
 
-                var lFilename = ContentDispositionHeaderValue.Parse(files.ContentDisposition).FileName;
+                var lFilename = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName;
                 var lExtName = lFilename.Substring(lFilename.LastIndexOf('.')).Replace("\"", "");
 
                 if (!mConfigService.ImageType.Contains(lExtName.ToLower()))
@@ -58,8 +55,7 @@ namespace DotNetCore.Api.Controllers
 
                 var lShortfilename = $"{StringUtils.NewGuid()}{lExtName}";
                 var lDate = DateTime.Now.ToString("yyyy-MM-dd");
-                var lFilePath = mHostingEnvironment.WebRootPath +
-                                $@"{Directory.GetCurrentDirectory()}\wwwroot\Static\Pictures\{lDate}\";
+                var lFilePath = $@"{mHostingEnvironment.WebRootPath + AppConstants.FILE_PICTURE_URL + lDate}\";
 
                 if (!Directory.Exists(lFilePath))
                     Directory.CreateDirectory(lFilePath);
@@ -68,11 +64,11 @@ namespace DotNetCore.Api.Controllers
 
                 using (var lFs = System.IO.File.Create(lFileFullName))
                 {
-                    await files.CopyToAsync(lFs);
+                    await file.CopyToAsync(lFs);
                     await lFs.FlushAsync();
                 }
 
-                return Ok($"http://localhost:5001/wwwroot/Static/Pictures/{lDate}/{lShortfilename}");
+                return Ok(CreateResultMsg(ApiErrorCode.Success));
             }
             catch (Exception lEx)
             {

@@ -17,6 +17,7 @@ namespace DotNetCore.SSO
             services.AddTransient<IConfigService, ConfigService>();
             services.AddTransient<ICoreService, CoreService>();
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IPicResourceService, PicResourceService>();
 
             return services;
         }

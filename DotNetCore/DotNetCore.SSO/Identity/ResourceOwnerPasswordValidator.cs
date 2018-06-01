@@ -30,7 +30,7 @@ namespace DotNetCore.SSO.Identity
         public async Task ValidateAsync(ResourceOwnerPasswordValidationContext context)
         {
             //根据context.UserName和context.Password与数据库的数据做校验，判断是否合法
-            var lResult = mUserService.ValidUser(context.UserName, context.Password);
+            var lResult = await mUserService.ValidUser(context.UserName, context.Password);
             if (lResult.Result)
             {
                 var lUser = (UserProfile)lResult.Data;

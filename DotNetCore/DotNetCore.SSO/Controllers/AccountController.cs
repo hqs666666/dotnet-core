@@ -50,7 +50,7 @@ namespace DotNetCore.SSO.Controllers
             if (IsAuthenticated)
                 return Ok(CreateResultMsg(UserId, null));
 
-            var lResult = mUserService.ValidUser(login.UserName, login.Password);
+            var lResult = await mUserService.ValidUser(login.UserName, login.Password);
             if (lResult.Result)
             {
                 var lUser = (User)lResult.Data;
@@ -75,6 +75,8 @@ namespace DotNetCore.SSO.Controllers
         [Route("api/Register")]
         public IActionResult Register([FromBody]RegisterDto register)
         {
+            if (!register.IsVaild)
+                return Ok(CreateErrorResultMsg(ApiErrorCode.Exception, "error"));
             var lResult = mUserService.Register(register);
             if (lResult.Result)
                 return Ok(CreateResultMsg(lResult.Message));

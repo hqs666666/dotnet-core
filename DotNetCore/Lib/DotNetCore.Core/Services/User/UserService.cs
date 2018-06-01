@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using DotNetCore.Core.Base;
+﻿using DotNetCore.Core.Base;
 using DotNetCore.Core.Base.DTOS.User;
 using DotNetCore.Core.Base.Services;
 using DotNetCore.Core.Base.Services.User;
 using DotNetCore.Domain.User;
 using DotNetCore.FrameWork.Utils;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace DotNetCore.Core.Services.User
 {
@@ -18,9 +18,10 @@ namespace DotNetCore.Core.Services.User
         private readonly DbSet<Role> mRoleDbSet;
         private readonly DbSet<UserProfile> mUserProfileDbSet;
         private readonly IConfigService mConfigService;
+        private readonly IPicResourceService mPicResourceService;
 
         public UserService(IWorkContext workContext, IDataContext dataContext,
-            IConfigService configService)
+            IConfigService configService, IPicResourceService picResourceService)
             : base(workContext, dataContext)
         {
             mUserDbSet = DataContext.Set<Domain.User.User>();
@@ -28,6 +29,7 @@ namespace DotNetCore.Core.Services.User
             mRoleDbSet = DataContext.Set<Role>();
             mUserProfileDbSet = DataContext.Set<UserProfile>();
             mConfigService = configService;
+            mPicResourceService = picResourceService;
         }
 
         public List<UserProfile> Get()
@@ -35,7 +37,7 @@ namespace DotNetCore.Core.Services.User
             return mUserProfileDbSet.ToList();
         }
 
-        public ResultMsg ValidUser(string userName, string password)
+        public async Task<ResultMsg> ValidUser(string userName, string password)
         {
             var lPasswordHash = EncryptionHelper.Md5Encrypt($"{password}&{mConfigService.PasswordKey}");
             var lUser = mUserDbSet.FirstOrDefault(p => p.PhoneNumber == userName && p.PasswordHash == lPasswordHash);
@@ -43,7 +45,7 @@ namespace DotNetCore.Core.Services.User
                 return CreateErrorMsg("用户名与密码不匹配");
 
             var lResult = CreateResultMsg();
-            lResult.Data = mUserProfileDbSet.Find(lUser.Id);
+            lResult.Data = await mUserProfileDbSet.FindAsync(lUser.Id);
             return lResult;
         }
 
@@ -51,6 +53,11 @@ namespace DotNetCore.Core.Services.User
         {
             var lRoleIds = mUserRoleDbSet.Where(p => p.UserId == userId).Select(p => p.RoleId);
             return mRoleDbSet.Where(p => lRoleIds.Contains(p.Id)).Select(p => p.Name).ToList();
+        }
+
+        public ResultMsg UpdateHead()
+        {
+            return null;
         }
 
         public ResultMsg Register(RegisterDto dto)
@@ -64,16 +71,16 @@ namespace DotNetCore.Core.Services.User
             lUser.PasswordHash = EncryptionHelper.Md5Encrypt($"{dto.Password}&{mConfigService.PasswordKey}");
             lUser.Email = "-1";
             lUser.UserType = (int)UserType.Common;
-            lUser.UserName = dto.UserName;
-            lUser.NickName = dto.UserName;
+            lUser.UserName = dto.NickName;
+            lUser.NickName = dto.NickName;
             mUserDbSet.Add(lUser);
 
             var lUserProfile = Create<UserProfile>();
             lUserProfile.Id = lUser.Id;
             lUserProfile.PhoneNumber = dto.UserName;
             lUserProfile.Email = "-1";
-            lUserProfile.UserName = dto.UserName;
-            lUserProfile.NickName = dto.UserName;
+            lUserProfile.UserName = dto.NickName;
+            lUserProfile.NickName = dto.NickName;
             lUserProfile.Gender = (int)Gender.Unknown;
             lUserProfile.UserType = (int)UserType.Common;
             mUserProfileDbSet.Add(lUserProfile);

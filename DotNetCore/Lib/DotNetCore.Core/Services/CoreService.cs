@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection;
+using System.Threading.Tasks;
 using DotNetCore.Core.Base;
 using DotNetCore.Core.Base.Services;
 using DotNetCore.FrameWork.Utils;
@@ -29,6 +30,31 @@ namespace DotNetCore.Core.Services
             try
             {
                 var lSavedResult = DataContext.SaveChanges();
+                if (lSavedResult >= 1)
+                    return CreateResultMsg("Success");
+                if (lSavedResult == 0)
+                    return CreateResultMsg("DataNotChange");
+            }
+            catch (DbUpdateConcurrencyException e)
+            {
+                return CreateErrorMsg(e.Message);
+            }
+            catch (DbUpdateException e)
+            {
+                return CreateErrorMsg(e.Message);
+            }
+            catch (Exception e)
+            {
+                return CreateErrorMsg(e.Message);
+            }
+            return CreateErrorMsg("Fail");
+        }
+
+        public async Task<ResultMsg> SaveChangesAsync()
+        {
+            try
+            {
+                var lSavedResult = await DataContext.SaveChangesAsync();
                 if (lSavedResult >= 1)
                     return CreateResultMsg("Success");
                 if (lSavedResult == 0)

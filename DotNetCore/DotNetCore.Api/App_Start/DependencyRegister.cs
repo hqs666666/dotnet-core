@@ -5,7 +5,7 @@ using DotNetCore.Core.Services.User;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace DotNetCore.Api.App_Start
+namespace DotNetCore.Api
 {
     public static class Dependency
     {
@@ -17,6 +17,7 @@ namespace DotNetCore.Api.App_Start
             services.AddTransient<IConfigService, ConfigService>();
             services.AddTransient<ICoreService, CoreService>();
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IPicResourceService, PicResourceService>();
 
             return services;
         }

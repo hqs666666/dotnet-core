@@ -18,5 +18,6 @@ namespace DotNetCore.Core.Base.Services
         string PasswordSecret { get; }
         string PasswordKey { get; }
         string ImageType { get; }
+        string AuthUrl { get; }
     }
 }

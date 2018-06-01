@@ -7,7 +7,7 @@
 
 namespace DotNetCore.Core.Base
 {
-    public class AppConstants
+    public sealed class AppConstants
     {
         #region 未授权时默认信息
 
@@ -24,5 +24,12 @@ namespace DotNetCore.Core.Base
         public const string ROLE_REGISTER_USER = "RegisterUser";
 
         #endregion
+
+        #region 静态文件路径
+
+        public const string FILE_PICTURE_URL = @"\Static\Pictures\";
+
+        #endregion
+
     }
 }

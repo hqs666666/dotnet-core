@@ -26,5 +26,7 @@ namespace DotNetCore.Core.Services
         public string PasswordKey => AppSettings.Configuration["Encryption:PasswordKey"];
 
         public string ImageType => AppSettings.Configuration["FileType:Image"];
+
+        public string AuthUrl => AppSettings.Configuration["Host:SSO"];
     }
 }

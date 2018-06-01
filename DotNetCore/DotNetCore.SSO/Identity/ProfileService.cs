@@ -1,4 +1,4 @@
-﻿ 
+﻿
 
 /*****************************************************************************
  * 
@@ -26,6 +26,7 @@ namespace DotNetCore.SSO.Identity
 
                 //set issued claims to return
                 context.IssuedClaims = lClaims.ToList();
+
             }
             catch (Exception ex)
             {

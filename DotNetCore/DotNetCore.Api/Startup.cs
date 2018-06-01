@@ -1,15 +1,11 @@
-﻿using System.IO;
-using DotNetCore.Api.App_Start;
-using DotNetCore.Core.Services;
+﻿using DotNetCore.Core.Services;
 using DotNetCore.FrameWork.Filter;
 using DotNetCore.FrameWork.Utils;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.FileProviders;
 
 namespace DotNetCore.Api
 {
@@ -70,11 +66,7 @@ namespace DotNetCore.Api
 
             app.UseCors("api");
 
-            //app.UseStaticFiles(new StaticFileOptions()
-            //{
-            //    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"Static/Files")),
-            //    RequestPath = new PathString("/src")
-            //});
+            app.UseStaticFiles();
 
             app.UseMvc();
         }
