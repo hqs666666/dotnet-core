@@ -13246,46 +13246,38 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\JinLin\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "/Users/hqs/.nuget/packages/": {},
+    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
-    "restoreSettings": {
-      "hideWarningsAndErrors": true
-    },
     "restore": {
-      "projectUniqueName": "D:\\project\\Git\\dotnet-core\\DotNetCore\\DotNetCore.Api\\DotNetCore.Api.csproj",
+      "projectUniqueName": "/Users/hqs/git/dotnet-core/DotNetCore/DotNetCore.Api/DotNetCore.Api.csproj",
       "projectName": "DotNetCore.Api",
-      "projectPath": "D:\\project\\Git\\dotnet-core\\DotNetCore\\DotNetCore.Api\\DotNetCore.Api.csproj",
-      "packagesPath": "C:\\Users\\JinLin\\.nuget\\packages\\",
-      "outputPath": "D:\\project\\Git\\dotnet-core\\DotNetCore\\DotNetCore.Api\\obj\\",
+      "projectPath": "/Users/hqs/git/dotnet-core/DotNetCore/DotNetCore.Api/DotNetCore.Api.csproj",
+      "packagesPath": "/Users/hqs/.nuget/packages/",
+      "outputPath": "/Users/hqs/git/dotnet-core/DotNetCore/DotNetCore.Api/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\JinLin\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
+        "/Users/hqs/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "D:\\project\\Git\\dotnet-core\\DotNetCore\\Lib\\DotNetCore.Core\\DotNetCore.Core.csproj": {
-              "projectPath": "D:\\project\\Git\\dotnet-core\\DotNetCore\\Lib\\DotNetCore.Core\\DotNetCore.Core.csproj"
+            "/Users/hqs/git/dotnet-core/DotNetCore/Lib/DotNetCore.Core/DotNetCore.Core.csproj": {
+              "projectPath": "/Users/hqs/git/dotnet-core/DotNetCore/Lib/DotNetCore.Core/DotNetCore.Core.csproj"
             },
-            "D:\\project\\Git\\dotnet-core\\DotNetCore\\Lib\\DotNetCore.FrameWork\\DotNetCore.FrameWork.csproj": {
-              "projectPath": "D:\\project\\Git\\dotnet-core\\DotNetCore\\Lib\\DotNetCore.FrameWork\\DotNetCore.FrameWork.csproj"
+            "/Users/hqs/git/dotnet-core/DotNetCore/Lib/DotNetCore.FrameWork/DotNetCore.FrameWork.csproj": {
+              "projectPath": "/Users/hqs/git/dotnet-core/DotNetCore/Lib/DotNetCore.FrameWork/DotNetCore.FrameWork.csproj"
             }
           }
         }
@@ -13299,30 +13291,30 @@
     "frameworks": {
       "netcoreapp2.0": {
         "dependencies": {
+          "Microsoft.NETCore.App": {
+            "target": "Package",
+            "version": "2.0.0",
+            "autoReferenced": true
+          },
           "IdentityServer4.AccessTokenValidation": {
             "target": "Package",
-            "version": "[2.6.0, )"
+            "version": "2.6.0"
           },
           "Microsoft.AspNetCore.All": {
             "target": "Package",
-            "version": "[2.0.7, )"
+            "version": "2.0.7"
           },
           "Microsoft.AspNetCore.Http": {
             "target": "Package",
-            "version": "[2.0.3, )"
+            "version": "2.0.3"
           },
           "Microsoft.Extensions.Options.ConfigurationExtensions": {
             "target": "Package",
-            "version": "[2.0.1, )"
-          },
-          "Microsoft.NETCore.App": {
-            "target": "Package",
-            "version": "[2.0.0, )",
-            "autoReferenced": true
+            "version": "2.0.1"
           },
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "target": "Package",
-            "version": "[2.0.2, )"
+            "version": "2.0.2"
           }
         },
         "imports": [

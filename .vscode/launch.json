@@ -10,9 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/DotNetCore/DotNetCore.SSO/bin/Debug/netcoreapp2.0/DotNetCore.SSO.dll",
+            "program": "${workspaceFolder}/DotNetCore/DotNetCore.Api/bin/Debug/netcoreapp2.0/DotNetCore.Api.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/DotNetCore/DotNetCore.SSO",
+            "cwd": "${workspaceFolder}/DotNetCore/DotNetCore.Api",
             "stopAtEntry": false,
             "internalConsoleOptions": "openOnSessionStart",
             "launchBrowser": {
