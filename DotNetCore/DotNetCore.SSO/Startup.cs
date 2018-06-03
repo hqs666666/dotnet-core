@@ -1,4 +1,5 @@
 ﻿using DotNetCore.Core.Services;
+using DotNetCore.FrameWork.Middleware;
 using DotNetCore.FrameWork.Utils;
 using DotNetCore.SSO.Identity;
 using Microsoft.AspNetCore.Builder;
@@ -6,7 +7,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 
 namespace DotNetCore.SSO
 {
@@ -52,17 +52,21 @@ namespace DotNetCore.SSO
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory logger)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
             }
 
             app.UseCors("api");
 
             app.UseIdentityServer();
 
+            //app.UseMiddleware<ResponseMiddleware>();
+
+            
             //依赖注入扩展方法，实现简单的隐式依赖注入
             app.UseTfDI();
 

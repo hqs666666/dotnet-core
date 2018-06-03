@@ -687,6 +687,21 @@
           "lib/netstandard2.0/Microsoft.AspNetCore.Diagnostics.Abstractions.dll": {}
         }
       },
+      "Microsoft.AspNetCore.Diagnostics.Elm/0.2.2": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Abstractions": "1.1.2",
+          "Microsoft.Extensions.Logging.Abstractions": "1.1.2",
+          "Microsoft.Extensions.Options": "1.1.2",
+          "NETStandard.Library": "1.6.1"
+        },
+        "compile": {
+          "lib/netstandard1.3/Microsoft.AspNetCore.Diagnostics.Elm.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/Microsoft.AspNetCore.Diagnostics.Elm.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore/2.0.2": {
         "type": "package",
         "dependencies": {
@@ -5577,6 +5592,19 @@
         "lib/netstandard2.0/Microsoft.AspNetCore.Diagnostics.Abstractions.xml",
         "microsoft.aspnetcore.diagnostics.abstractions.2.0.2.nupkg.sha512",
         "microsoft.aspnetcore.diagnostics.abstractions.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Diagnostics.Elm/0.2.2": {
+      "sha512": "er8NBkkJxjL8FZc5orOVHg1srNsmaZBXlz3Ry9XLCsHe59OYazOG1vb2Oy6cRWspTOevhBgMtgpcgvtq4Pk36g==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.diagnostics.elm/0.2.2",
+      "files": [
+        "lib/net451/Microsoft.AspNetCore.Diagnostics.Elm.dll",
+        "lib/net451/Microsoft.AspNetCore.Diagnostics.Elm.xml",
+        "lib/netstandard1.3/Microsoft.AspNetCore.Diagnostics.Elm.dll",
+        "lib/netstandard1.3/Microsoft.AspNetCore.Diagnostics.Elm.xml",
+        "microsoft.aspnetcore.diagnostics.elm.0.2.2.nupkg.sha512",
+        "microsoft.aspnetcore.diagnostics.elm.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore/2.0.2": {
@@ -13239,6 +13267,7 @@
       "DotNetCore.FrameWork >= 1.0.0",
       "IdentityServer4.AccessTokenValidation >= 2.6.0",
       "Microsoft.AspNetCore.All >= 2.0.7",
+      "Microsoft.AspNetCore.Diagnostics.Elm >= 0.2.2",
       "Microsoft.AspNetCore.Http >= 2.0.3",
       "Microsoft.Extensions.Options.ConfigurationExtensions >= 2.0.1",
       "Microsoft.NETCore.App >= 2.0.0",
@@ -13303,6 +13332,10 @@
           "Microsoft.AspNetCore.All": {
             "target": "Package",
             "version": "2.0.7"
+          },
+          "Microsoft.AspNetCore.Diagnostics.Elm": {
+            "target": "Package",
+            "version": "0.2.2"
           },
           "Microsoft.AspNetCore.Http": {
             "target": "Package",

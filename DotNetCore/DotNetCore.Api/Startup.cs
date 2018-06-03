@@ -1,11 +1,13 @@
 ﻿using DotNetCore.Core.Services;
 using DotNetCore.FrameWork.Filter;
+using DotNetCore.FrameWork.Middleware;
 using DotNetCore.FrameWork.Utils;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace DotNetCore.Api
 {
@@ -59,8 +61,12 @@ namespace DotNetCore.Api
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
             }
+          
             app.UseAuthentication();
+
+            app.UseMiddleware<ResponseMiddleware>();
 
             app.UseTfDI();//依赖注入扩展方法
 
