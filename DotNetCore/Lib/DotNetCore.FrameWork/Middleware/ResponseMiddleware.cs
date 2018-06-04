@@ -1,16 +1,18 @@
 using System;
+using System.IO;
 using System.Threading.Tasks;
-using DotNetCore.Core.Base;
+using DotNetCore.Core.Base.Services.Log;
 using Microsoft.AspNetCore.Http;
-using Newtonsoft.Json;
 
 namespace DotNetCore.FrameWork.Middleware
 {
     public class ResponseMiddleware
     {
         private readonly RequestDelegate mNext;
-        public ResponseMiddleware(RequestDelegate next)
+        private readonly ILogService mLogService;
+        public ResponseMiddleware(RequestDelegate next, ILogService logService)
         {
+            mLogService = logService;
             mNext = next;
         }
 
@@ -27,13 +29,18 @@ namespace DotNetCore.FrameWork.Middleware
             //     await context.Response.WriteAsync(JsonConvert.SerializeObject(response));
             // }
             //await mNext.Invoke(context);
+
             try
             {
                 await mNext.Invoke(context);
             }
             catch (Exception lEx)
             {
-                await context.Response.WriteAsync(JsonConvert.SerializeObject(lEx));
+                var lReader = new StreamReader(context.Request.Body);
+                var lRequestBody = await lReader.ReadToEndAsync();
+                var lMessage = $"{context.Request.Host + context.Request.Path}；请求方式：{context.Request.Method}；请求参数：{lRequestBody}；";
+
+                mLogService.Error(this, $"{lMessage}错误信息：", lEx);
             }
         }
     }

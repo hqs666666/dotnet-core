@@ -1,4 +1,5 @@
-﻿using DotNetCore.Core.Base;
+﻿using System;
+using DotNetCore.Core.Base;
 using DotNetCore.Core.Base.DTOS.User;
 using DotNetCore.Core.Base.Services;
 using DotNetCore.Core.Base.Services.User;
@@ -19,7 +20,6 @@ namespace DotNetCore.Core.Services.User
         private readonly DbSet<UserProfile> mUserProfileDbSet;
         private readonly IConfigService mConfigService;
         private readonly IPicResourceService mPicResourceService;
-
         public UserService(IWorkContext workContext, IDataContext dataContext,
             IConfigService configService, IPicResourceService picResourceService)
             : base(workContext, dataContext)

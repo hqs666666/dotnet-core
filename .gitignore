@@ -1,6 +1,8 @@
 .vscode
 .vs
 .DS_Store
+log-file.log
 bin
 obj
 wwwroot
+logfile
