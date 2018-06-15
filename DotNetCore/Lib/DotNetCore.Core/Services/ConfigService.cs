@@ -28,5 +28,13 @@ namespace DotNetCore.Core.Services
         public string ImageType => AppSettings.Configuration["FileType:Image"];
 
         public string AuthUrl => AppSettings.Configuration["Host:SSO"];
+
+        public string RedisConnection => AppSettings.Configuration["ConnectionStrings:RedisConnection"];
+
+        public string RabbitMqHostName => AppSettings.Configuration["RabbitMQ:HostName"];
+
+        public string RabbitMqUserName => AppSettings.Configuration["RabbitMQ:UserName"];
+
+        public string RabbitMqPwd => AppSettings.Configuration["RabbitMQ:Password"];
     }
 }

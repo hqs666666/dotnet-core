@@ -8,22 +8,24 @@
  * 
  ****************************************************************************/
 
+using DotNetCore.Core.Base.Services;
 using DotNetCore.Core.Base.Services.Cache;
 using Newtonsoft.Json;
 using StackExchange.Redis;
+using System;
+using System.Text;
+using DotNetCore.FrameWork.Helpers;
+using DotNetCore.FrameWork.Utils;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace DotNetCore.Core.Services.Cache
 {
     public class RedisService : IRedisService
     {
-        private RedisService()
-        {
-
-        }
-
         private bool mDisposed;
         private static ConnectionMultiplexer _instance;
         private static readonly object _locker = new object();
+        private static IConfigService ConfigService => DI.ServiceProvider.GetRequiredService<IConfigService>();
         /// <summary>
         /// 单例模式获取redis连接实例
         /// </summary>
@@ -33,12 +35,8 @@ namespace DotNetCore.Core.Services.Cache
             {
                 lock (_locker)
                 {
-
                     if (_instance == null)
-                    {
-                        if (_instance == null)
-                            _instance = ConnectionMultiplexer.Connect("127.0.0.1"); //这里应该配置文件，不过这里演示就没写
-                    }
+                        _instance = ConnectionMultiplexer.Connect(ConfigService.RedisConnection);
                 }
                 return _instance;
             }
@@ -47,11 +45,20 @@ namespace DotNetCore.Core.Services.Cache
         public void Set<T>(string key, T value)
         {
             var lRedis = Instance.GetDatabase();
-            var lHasKey = lRedis.KeyExists(key);
-            if (lHasKey)
-                return;
-            var lValue = JsonConvert.SerializeObject(value);
+            var lValue = JsonHelper.ObjectToBytes(value);
             lRedis.StringSet(key, lValue);
+        }
+
+        public void Set<T>(string key, T value, int cacheTime)
+        {
+            if (null == value)
+                return;
+
+            var lValue = JsonHelper.ObjectToBytes(value);
+            var lExpiresIn = TimeSpan.FromMinutes(cacheTime);
+
+            var lRedis = Instance.GetDatabase();
+            lRedis.StringSet(key, lValue, lExpiresIn);
         }
 
         public T Get<T>(string key)
@@ -61,7 +68,7 @@ namespace DotNetCore.Core.Services.Cache
             if (!lHasKey)
                 return default(T);
             var lVaule = lRedis.StringGet(key);
-            return JsonConvert.DeserializeObject<T>(lVaule);
+            return JsonHelper.BytesToObject<T>(lVaule);
         }
 
         public bool Remove(string key)

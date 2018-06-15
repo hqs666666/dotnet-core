@@ -37,7 +37,6 @@ namespace DotNetCore.Api.Controllers
         [HttpPost("account/login")]
         public async Task<IActionResult> Login([FromBody]LoginDto login)
         {
-            login = null;
             var lUser = await mUserService.ValidUser(login.UserName, login.Password);
             if (!lUser.Result)
                 return Ok(CreateErrorResultMsg(ApiErrorCode.Exception, "用户名或密码不匹配"));

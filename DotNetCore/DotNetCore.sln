@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetCore.SSO", "DotNetCore.SSO\DotNetCore.SSO.csproj", "{696EB191-9F9F-4B10-A3CA-DEFCFB586CA0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetCore.SSO", "DotNetCore.SSO\DotNetCore.SSO.csproj", "{696EB191-9F9F-4B10-A3CA-DEFCFB586CA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetCore.Api", "DotNetCore.Api\DotNetCore.Api.csproj", "{205548EA-3146-4C77-9307-18127877D1B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetCore.Api", "DotNetCore.Api\DotNetCore.Api.csproj", "{205548EA-3146-4C77-9307-18127877D1B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetCore.FrameWork", "Lib\DotNetCore.FrameWork\DotNetCore.FrameWork.csproj", "{FE8F3B8B-2EFF-473C-9A19-7F3217019DA1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetCore.FrameWork", "Lib\DotNetCore.FrameWork\DotNetCore.FrameWork.csproj", "{FE8F3B8B-2EFF-473C-9A19-7F3217019DA1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetCore.Core", "Lib\DotNetCore.Core\DotNetCore.Core.csproj", "{2067B847-082B-40BA-99BA-1C8C3A8F2E4B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetCore.Core", "Lib\DotNetCore.Core\DotNetCore.Core.csproj", "{2067B847-082B-40BA-99BA-1C8C3A8F2E4B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetCore.Core.Base", "Lib\DotNetCore.Core.Base\DotNetCore.Core.Base.csproj", "{66C972A8-5E3A-4C30-984D-81025A2BD2FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetCore.Core.Base", "Lib\DotNetCore.Core.Base\DotNetCore.Core.Base.csproj", "{66C972A8-5E3A-4C30-984D-81025A2BD2FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetCore.Domain", "Lib\DotNetCore.Domain\DotNetCore.Domain.csproj", "{B9434EC3-1F6D-4C7D-94A4-54E210D1FC38}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetCore.Domain", "Lib\DotNetCore.Domain\DotNetCore.Domain.csproj", "{B9434EC3-1F6D-4C7D-94A4-54E210D1FC38}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

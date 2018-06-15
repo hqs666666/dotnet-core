@@ -19,5 +19,9 @@ namespace DotNetCore.Core.Base.Services
         string PasswordKey { get; }
         string ImageType { get; }
         string AuthUrl { get; }
+        string RedisConnection { get; }
+        string RabbitMqHostName { get; }
+        string RabbitMqUserName { get; }
+        string RabbitMqPwd { get; }
     }
 }

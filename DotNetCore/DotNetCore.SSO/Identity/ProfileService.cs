@@ -10,8 +10,11 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using DotNetCore.Core.Base.Services.Log;
+using DotNetCore.FrameWork.Utils;
 using IdentityServer4.Models;
 using IdentityServer4.Services;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace DotNetCore.SSO.Identity
 {
@@ -28,15 +31,25 @@ namespace DotNetCore.SSO.Identity
                 context.IssuedClaims = lClaims.ToList();
 
             }
-            catch (Exception ex)
+            catch (Exception lEx)
             {
-                //log your error
+                await Task.Run(() =>
+                {
+                    LogService.Error(this, lEx);
+                });
             }
         }
 
         public async Task IsActiveAsync(IsActiveContext context)
         {
             context.IsActive = true;
+
+            await Task.Run(() =>
+            {
+                
+            });
         }
+
+        private ILogService LogService => DI.ServiceProvider.GetRequiredService<ILogService>();
     }
 }

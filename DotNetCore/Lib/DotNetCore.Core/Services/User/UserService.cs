@@ -1,14 +1,13 @@
-﻿using System;
-using DotNetCore.Core.Base;
+﻿using DotNetCore.Core.Base;
 using DotNetCore.Core.Base.DTOS.User;
 using DotNetCore.Core.Base.Services;
 using DotNetCore.Core.Base.Services.User;
 using DotNetCore.Domain.User;
-using DotNetCore.FrameWork.Utils;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DotNetCore.FrameWork.Helpers;
 
 namespace DotNetCore.Core.Services.User
 {

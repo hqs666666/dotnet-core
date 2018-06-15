@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 
 namespace DotNetCore.Api
 {
@@ -31,7 +30,7 @@ namespace DotNetCore.Api
                         options.ApiName = "api";    //api的name，需要和config的名称相同
                     });
 
-            //add sqlserver
+            //add mysql
             services.AddDbContext<DataContext>(options => options.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
 
             //add cors
@@ -66,7 +65,7 @@ namespace DotNetCore.Api
           
             app.UseAuthentication();
 
-            app.UseMiddleware<ResponseMiddleware>();
+            app.UseMiddleware<ExceptionMiddleware>();
 
             app.UseTfDI();//依赖注入扩展方法
 

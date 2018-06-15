@@ -6,11 +6,11 @@ using Microsoft.AspNetCore.Http;
 
 namespace DotNetCore.FrameWork.Middleware
 {
-    public class ResponseMiddleware
+    public class ExceptionMiddleware
     {
         private readonly RequestDelegate mNext;
         private readonly ILogService mLogService;
-        public ResponseMiddleware(RequestDelegate next, ILogService logService)
+        public ExceptionMiddleware(RequestDelegate next, ILogService logService)
         {
             mLogService = logService;
             mNext = next;
@@ -18,18 +18,6 @@ namespace DotNetCore.FrameWork.Middleware
 
         public async Task Invoke(HttpContext context)
         {
-            // var lStatusCode = context.Response.StatusCode;
-            // if (lStatusCode == StatusCodes.Status500InternalServerError)
-            // {
-            //     var response = new ApiResultMsg<string>
-            //     {
-            //         ErrorCode = lStatusCode,
-            //         ErrorMsg = "请求失败",
-            //     };
-            //     await context.Response.WriteAsync(JsonConvert.SerializeObject(response));
-            // }
-            //await mNext.Invoke(context);
-
             try
             {
                 await mNext.Invoke(context);

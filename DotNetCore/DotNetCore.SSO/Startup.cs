@@ -1,11 +1,7 @@
-﻿using System.IO;
-using DotNetCore.Core.Services;
+﻿using DotNetCore.Core.Services;
 using DotNetCore.FrameWork.Middleware;
 using DotNetCore.FrameWork.Utils;
 using DotNetCore.SSO.Identity;
-using log4net;
-using log4net.Config;
-using log4net.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -18,12 +14,9 @@ namespace DotNetCore.SSO
     public class Startup
     {
         public IConfiguration Configuration { get; }
-        //public static ILoggerRepository Repository { get; set; }
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-            //Repository = LogManager.CreateRepository("NETCoreRepository");
-            //XmlConfigurator.Configure(Repository, new FileInfo("log4net.config"));
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -72,7 +65,7 @@ namespace DotNetCore.SSO
 
             app.UseIdentityServer();
 
-            app.UseMiddleware<ResponseMiddleware>();
+            app.UseMiddleware<ExceptionMiddleware>();
 
             //依赖注入扩展方法，实现简单的隐式依赖注入
             app.UseTfDI();
