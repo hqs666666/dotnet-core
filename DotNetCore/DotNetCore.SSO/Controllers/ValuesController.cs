@@ -1,12 +1,10 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using DotNetCore.Core.Base.Services.Cache;
 using DotNetCore.Core.Base.Services.User;
 using DotNetCore.Core.Events;
 using DotNetCore.Domain.User;
 using DotNetCore.FrameWork.Controller;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 
 namespace DotNetCore.SSO.Controllers
 {

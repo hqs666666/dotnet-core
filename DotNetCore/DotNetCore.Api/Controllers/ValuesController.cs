@@ -18,7 +18,7 @@ namespace DotNetCore.Api.Controllers
         [HttpGet("api/values")]
         public IActionResult Get()
         {
-            return new JsonResult(mUserService.Get());
+            return new JsonResult(UserId);
         }
 
     }
