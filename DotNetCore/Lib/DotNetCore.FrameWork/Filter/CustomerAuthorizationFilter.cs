@@ -37,6 +37,8 @@ namespace DotNetCore.FrameWork.Filter
                 return;
 
             var lClaims = context.HttpContext.User.Claims;
+            if (!context.HttpContext.User.Identity.IsAuthenticated)
+                context.HttpContext.Response.Redirect("http://localhost:5000/api/login");
 
             //从claims取出用户相关信息，到数据库中取得用户具备的权限码，与当前Controller或Action标识的权限码做比较
             var lUserId = lClaims.FirstOrDefault(p => p.Type == "sub")?.Value;

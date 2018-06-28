@@ -1,4 +1,6 @@
-﻿using DotNetCore.Core.Services;
+﻿using System;
+using DotNetCore.Core.Services;
+using DotNetCore.FrameWork.Filter;
 using DotNetCore.FrameWork.Middleware;
 using DotNetCore.FrameWork.Utils;
 using DotNetCore.SSO.Identity;
@@ -47,9 +49,21 @@ namespace DotNetCore.SSO
             services.AddDependencyRegister();
             services.AddTfDI();
 
-            services.AddMvc()
+            services.AddMvc(options =>
+                    {
+                        //全局异常过滤器 与 ExceptionMiddleware 二选一
+                        options.Filters.Add<ExceptionFilter>();
+                        options.Filters.Add<CustomerAuthorizationFilter>();
+                    })
                     //解决时间格式包含 T 字符
                     .AddJsonOptions(options => options.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss");
+
+            //添加Session 服务
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(20);
+                options.Cookie.HttpOnly = true;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -65,12 +79,20 @@ namespace DotNetCore.SSO
 
             app.UseIdentityServer();
 
-            app.UseMiddleware<ExceptionMiddleware>();
+            //异常处理中间件
+            //app.UseMiddleware<ExceptionMiddleware>();
 
             //依赖注入扩展方法，实现简单的隐式依赖注入
             app.UseTfDI();
 
-            app.UseMvc();
+            //启用Session
+            app.UseSession();
+            app.UseMvc(options =>
+            {
+                options.MapRoute(
+                    name: "default",
+                    template: "{controller=Values}/{action=Index}/{id?}");
+            });
         }
     }
 }

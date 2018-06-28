@@ -20,5 +20,18 @@ namespace DotNetCore.FrameWork.Helpers
             var lJsonString = Encoding.UTF8.GetString(serializedObject);
             return JsonConvert.DeserializeObject<T>(lJsonString);
         }
+
+        public static string ObjectToJson<T>(T value)
+        {
+            return JsonConvert.SerializeObject(value);
+        }
+
+        public static T JsonToObject<T>(string json)
+        {
+            if (string.IsNullOrEmpty(json))
+                return default(T);
+
+            return JsonConvert.DeserializeObject<T>(json);
+        }
     }
 }

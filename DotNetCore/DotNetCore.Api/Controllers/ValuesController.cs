@@ -1,12 +1,11 @@
-﻿using DotNetCore.Core.Base;
-using DotNetCore.Core.Base.Services.User;
-using DotNetCore.FrameWork.Attribute;
+﻿using DotNetCore.Core.Base.Services.User;
 using DotNetCore.FrameWork.Controller;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DotNetCore.Api.Controllers
 {
-    [CustomerAuthorize(AppConstants.ROLE_REGISTER_USER)]
+    [Authorize]
     public class ValuesController : BaseController
     {
         private readonly IUserService mUserService;

@@ -46,8 +46,7 @@ namespace DotNetCore.Api
             services.AddDependencyRegister();
             services.AddTfDI();
 
-            //添加授权过滤器
-            services.AddMvcCore(option => { option.Filters.Add(typeof(CustomerAuthorizationFilter)); })
+            services.AddMvcCore()
                     .AddAuthorization()
                     .AddJsonOptions(options => options.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss");
 

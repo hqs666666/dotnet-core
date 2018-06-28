@@ -12,6 +12,5 @@ namespace DotNetCore.FrameWork.Attribute
         {
             Permission = permission;
         }
-
     }
 }

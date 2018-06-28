@@ -20,7 +20,7 @@ namespace DotNetCore.SSO.Controllers
             mRedisService = redisService;
         }
 
-        [Route("api/index")]
+        [Route("values/index")]
         public JsonResult Index()
         {
             var lResult = mRedisService.Get<List<UserProfile>>("UserInfo");
@@ -33,7 +33,7 @@ namespace DotNetCore.SSO.Controllers
             return Json(lResult);
         }
 
-        [Route("api/send")]
+        [Route("values/send")]
         public JsonResult Send()
         {
             var lProducer = new EventProducer();
@@ -42,7 +42,7 @@ namespace DotNetCore.SSO.Controllers
             return Json("success");
         }
 
-        [Route("api/receive")]
+        [Route("values/receive")]
         public JsonResult Receive()
         {
             var lProducer = new EventsConsumer();

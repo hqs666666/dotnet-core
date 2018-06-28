@@ -15,7 +15,6 @@ using DotNetCore.Core.Base.Services.User;
 using DotNetCore.Domain.User;
 using DotNetCore.FrameWork.Attribute;
 using DotNetCore.FrameWork.Controller;
-using IdentityServer4;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -43,8 +42,8 @@ namespace DotNetCore.SSO.Controllers
         #endregion
 
         [Produces("application/json")]
-        [HttpPost]
-        [Route("api/Login")]
+        [HttpGet]
+        [Route("account/login")]
         public async Task<IActionResult> LoginAsync([FromBody]LoginDto login)
         {
             if (IsAuthenticated)
@@ -53,10 +52,10 @@ namespace DotNetCore.SSO.Controllers
             var lResult = await mUserService.ValidUser(login.UserName, login.Password);
             if (lResult.Result)
             {
-                var lUser = (User)lResult.Data;
+                var lUser = (UserProfile)lResult.Data;
                 //写入cookie
                 AuthenticationProperties lProps = null;
-                if (login.RememberMe == "on")
+                if (login.RememberMe)
                 {
                     lProps = new AuthenticationProperties
                     {
@@ -65,14 +64,13 @@ namespace DotNetCore.SSO.Controllers
                     };
                 }
                 await HttpContext.SignInAsync(lUser.Id, lUser.UserName, lProps);
-                return Ok(CreateResultMsg(UserId, null));
+                return Ok(CreateResultMsg(lUser.Id, null));
             }
-
             return Ok(CreateErrorResultMsg(ApiErrorCode.Exception));
         }
 
         [HttpPost]
-        [Route("api/Register")]
+        [Route("account/register")]
         public IActionResult Register([FromBody]RegisterDto register)
         {
             if (!register.IsVaild)
@@ -84,11 +82,14 @@ namespace DotNetCore.SSO.Controllers
         }
 
         [HttpPost]
-        [Route("api/Logout")]
-        [Authorize]
+        [Route("account/logout")]
         public async Task<IActionResult> Logout()
         {
-            await HttpContext.SignOutAsync(IdentityServerConstants.DefaultCookieAuthenticationScheme);
+            if (IsAuthenticated)
+            {
+                await HttpContext.SignOutAsync();
+            }
+           
             return Ok(CreateResultMsg(IsAuthenticated));
         }
     }

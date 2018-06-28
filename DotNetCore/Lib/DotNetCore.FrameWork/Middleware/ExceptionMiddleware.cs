@@ -29,6 +29,7 @@ namespace DotNetCore.FrameWork.Middleware
                 var lMessage = $"{context.Request.Host + context.Request.Path}；请求方式：{context.Request.Method}；请求参数：{lRequestBody}；";
 
                 mLogService.Error(this, $"{lMessage}错误信息：", lEx);
+                context.Response.StatusCode = StatusCodes.Status500InternalServerError;
             }
         }
     }
