@@ -74,3 +74,13 @@ Height int NOT NULL,
 PicSize decimal (15, 2) NOT NULL,
 PicUrl varchar (256)NOT NULL
 ) 
+
+CREATE TABLE sys_log(
+Id INT PRIMARY KEY NOT NULL auto_increment,
+Ctime DATETIME DEFAULT NOW(),
+CreatedBy VARCHAR(32) NOT NULL DEFAULT '-1',
+LogType VARCHAR(20) NOT NULL,
+Url VARCHAR(1024) NOT NULL,
+Ip VARCHAR(30) NOT NULL,
+Description Text NOT NULL
+)

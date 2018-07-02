@@ -1,4 +1,5 @@
 ﻿using System;
+using DotNetCore.Core.Base.Services;
 using DotNetCore.Core.Services;
 using DotNetCore.FrameWork.Filter;
 using DotNetCore.FrameWork.Middleware;
@@ -87,12 +88,7 @@ namespace DotNetCore.SSO
 
             //启用Session
             app.UseSession();
-            app.UseMvc(options =>
-            {
-                options.MapRoute(
-                    name: "default",
-                    template: "{controller=Values}/{action=Index}/{id?}");
-            });
+            app.UseMvcWithDefaultRoute();
         }
     }
 }

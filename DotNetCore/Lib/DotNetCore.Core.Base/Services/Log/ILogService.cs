@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DotNetCore.Core.Base.Services.Log
 {
-    public interface ILogService 
+    public interface ILogService : ICoreService
     {
 
         /* Log a message object */
@@ -42,5 +42,7 @@ namespace DotNetCore.Core.Base.Services.Log
         void Fatal(object source, object message, Exception exception);
 
         void Fatal(Type source, object message, Exception exception);
+
+        List<Domain.Log.Log> GetList();
     }
 }

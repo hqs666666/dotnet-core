@@ -1,22 +1,41 @@
 ﻿using log4net;
 using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
 using DotNetCore.Core.Base.Services;
 using DotNetCore.Core.Base.Services.Log;
+using DotNetCore.FrameWork.Helpers;
+using DotNetCore.FrameWork.Utils;
 using log4net.Config;
 using log4net.Repository;
+using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 
 namespace DotNetCore.Core.Services.Log
 {
-    public class LogService :  ILogService
+    public class LogService : CoreService, ILogService
     {
         private readonly ConcurrentDictionary<Type, ILog> mLoggers = new ConcurrentDictionary<Type, ILog>();
-        public ILoggerRepository Repository { get; set; }
-        public LogService()
+        private ILoggerRepository Repository { get; set; }
+        private readonly IHttpContextAccessor mHttpContextAccessor;
+        private readonly DbSet<Domain.Log.Log> mLogDbSet;
+
+        public LogService(IWorkContext workContext, IDataContext dataContext,
+            IHttpContextAccessor httpContextAccessor)
+        : base(workContext, dataContext)
         {
-            Repository = LogManager.CreateRepository("NETCoreRepository");
+            var lRepositories = LogManager.GetAllRepositories();
+            if (lRepositories.Any(p => p.Name == "NETCoreRepository"))
+                Repository = LogManager.GetRepository("NETCoreRepository");
+            else
+                Repository = LogManager.CreateRepository("NETCoreRepository");
             XmlConfigurator.Configure(Repository, new FileInfo("log4net.config"));
+
+            mHttpContextAccessor = httpContextAccessor;
+            mLogDbSet = DataContext.Set<Domain.Log.Log>();
         }
 
         /// <summary>
@@ -72,6 +91,7 @@ namespace DotNetCore.Core.Services.Log
             if (lLogger.IsDebugEnabled)
             {
                 lLogger.Debug(message);
+                SaveInDb("debug", message);
             }
         }
 
@@ -96,6 +116,7 @@ namespace DotNetCore.Core.Services.Log
             if (lLogger.IsInfoEnabled)
             {
                 lLogger.Info(message);
+                SaveInDb("info", message);
             }
         }
 
@@ -120,6 +141,7 @@ namespace DotNetCore.Core.Services.Log
             if (lLogger.IsWarnEnabled)
             {
                 lLogger.Warn(message);
+                SaveInDb("warn", message);
             }
         }
 
@@ -144,6 +166,7 @@ namespace DotNetCore.Core.Services.Log
             if (lLogger.IsErrorEnabled)
             {
                 lLogger.Error(message);
+                SaveInDb("error", message);
             }
         }
 
@@ -168,6 +191,7 @@ namespace DotNetCore.Core.Services.Log
             if (lLogger.IsFatalEnabled)
             {
                 lLogger.Fatal(message);
+                SaveInDb("fatal", message);
             }
         }
 
@@ -281,6 +305,27 @@ namespace DotNetCore.Core.Services.Log
         public void Fatal(Type source, object message, Exception exception)
         {
             GetLogger(source).Fatal(message, exception);
+        }
+
+        public List<Domain.Log.Log> GetList()
+        {
+            var lToday = DateTime.Today;
+            var lTomorrow = lToday.AddDays(1);
+            return mLogDbSet.Where(p => p.Ctime >= lToday && p.Ctime <= lTomorrow).ToList();
+        }
+        private void SaveInDb(string type,object desc)
+        {
+            var lLog = new Domain.Log.Log
+            {
+                CreatedBy = UserId,
+                Ctime = DateTime.Now,
+                Ip = Utils.GetIP(),
+                LogType = type,
+                Url = mHttpContextAccessor.HttpContext.Request.Host + mHttpContextAccessor.HttpContext.Request.Path,
+                Description = JsonHelper.ObjectToJson(desc),
+            };
+            mLogDbSet.Add(lLog);
+            SaveChanges();
         }
     }
 }

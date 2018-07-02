@@ -7,7 +7,8 @@ namespace DotNetCore.Core.Base.Services.User
 {
     public interface IUserService : ICoreService
     {
-        List<UserProfile> Get();
+        List<UserProfile> GetList();
+        Task<UserProfile> GetAsync(string userId);
         ResultMsg Register(RegisterDto dto);
         Task<ResultMsg> ValidUser(string userName, string password);
         IList<string> GetRole(string userId);

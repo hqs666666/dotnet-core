@@ -10,14 +10,16 @@
 
 
 using System;
+using System.Threading.Tasks;
 
 namespace DotNetCore.Core.Base.Services.Cache
 {
     public interface IRedisService : IDisposable
     {
-        void Set<T>(string key, T value);
-        void Set<T>(string key, T value, int cacheTime);
+        Task SetAsync<T>(string key, T value);
+        Task SetAsync<T>(string key, T value, int cacheTime);
+        Task<T> GetAsync<T>(string key);
         T Get<T>(string key);
-        bool Remove(string key);
+        Task RemoveAsync(string key);
     }
 }

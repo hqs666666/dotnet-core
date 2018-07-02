@@ -11,7 +11,9 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using DotNetCore.Core.Base.Services.Log;
+using DotNetCore.Core.Base.Services.User;
 using DotNetCore.FrameWork.Utils;
+using IdentityServer4.Extensions;
 using IdentityServer4.Models;
 using IdentityServer4.Services;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,6 +22,12 @@ namespace DotNetCore.SSO.Identity
 {
     public class ProfileService : IProfileService
     {
+        private readonly IUserService mUserService;
+
+        public ProfileService(IUserService userService)
+        {
+            mUserService = userService;
+        }
         public async Task GetProfileDataAsync(ProfileDataRequestContext context)
         {
             try
@@ -42,12 +50,9 @@ namespace DotNetCore.SSO.Identity
 
         public async Task IsActiveAsync(IsActiveContext context)
         {
-            context.IsActive = true;
-
-            await Task.Run(() =>
-            {
-                
-            });
+            var lSub = context.Subject.GetSubjectId();
+            var lUser = await mUserService.GetAsync(lSub);
+            context.IsActive = lUser != null;
         }
 
         private ILogService LogService => DI.ServiceProvider.GetRequiredService<ILogService>();

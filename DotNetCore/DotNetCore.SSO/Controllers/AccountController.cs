@@ -24,6 +24,7 @@ namespace DotNetCore.SSO.Controllers
 {
     [AllowAnonymous]
     [SecurityHeaders]
+    [Route("api/account")]
     public class AccountController : BaseController
     {
         #region DI
@@ -42,8 +43,7 @@ namespace DotNetCore.SSO.Controllers
         #endregion
 
         [Produces("application/json")]
-        [HttpGet]
-        [Route("account/login")]
+        [HttpGet("login")]
         public async Task<IActionResult> LoginAsync([FromBody]LoginDto login)
         {
             if (IsAuthenticated)
@@ -69,8 +69,7 @@ namespace DotNetCore.SSO.Controllers
             return Ok(CreateErrorResultMsg(ApiErrorCode.Exception));
         }
 
-        [HttpPost]
-        [Route("account/register")]
+        [HttpPost("register")]
         public IActionResult Register([FromBody]RegisterDto register)
         {
             if (!register.IsVaild)
@@ -81,8 +80,7 @@ namespace DotNetCore.SSO.Controllers
             return Ok(CreateErrorResultMsg(ApiErrorCode.Exception, lResult.Message));
         }
 
-        [HttpPost]
-        [Route("account/logout")]
+        [HttpPost("logout")]
         public async Task<IActionResult> Logout()
         {
             if (IsAuthenticated)

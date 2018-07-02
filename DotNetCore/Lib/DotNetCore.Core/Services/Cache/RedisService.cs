@@ -10,10 +10,9 @@
 
 using DotNetCore.Core.Base.Services;
 using DotNetCore.Core.Base.Services.Cache;
-using Newtonsoft.Json;
 using StackExchange.Redis;
 using System;
-using System.Text;
+using System.Threading.Tasks;
 using DotNetCore.FrameWork.Helpers;
 using DotNetCore.FrameWork.Utils;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,7 +21,6 @@ namespace DotNetCore.Core.Services.Cache
 {
     public class RedisService : IRedisService
     {
-        private bool mDisposed;
         private static ConnectionMultiplexer _instance;
         private static readonly object _locker = new object();
         private static IConfigService ConfigService => DI.ServiceProvider.GetRequiredService<IConfigService>();
@@ -42,14 +40,14 @@ namespace DotNetCore.Core.Services.Cache
             }
         }
 
-        public void Set<T>(string key, T value)
+        public async Task SetAsync<T>(string key, T value)
         {
             var lRedis = Instance.GetDatabase();
             var lValue = JsonHelper.ObjectToBytes(value);
-            lRedis.StringSet(key, lValue);
+            await lRedis.StringSetAsync(key, lValue);
         }
 
-        public void Set<T>(string key, T value, int cacheTime)
+        public async Task SetAsync<T>(string key, T value, int cacheTime)
         {
             if (null == value)
                 return;
@@ -58,7 +56,17 @@ namespace DotNetCore.Core.Services.Cache
             var lExpiresIn = TimeSpan.FromMinutes(cacheTime);
 
             var lRedis = Instance.GetDatabase();
-            lRedis.StringSet(key, lValue, lExpiresIn);
+            await lRedis.StringSetAsync(key, lValue, lExpiresIn);
+        }
+
+        public async Task<T> GetAsync<T>(string key)
+        {
+            var lRedis = Instance.GetDatabase();
+            var lHasKey = await lRedis.KeyExistsAsync(key);
+            if (!lHasKey)
+                return default(T);
+            var lVaule = await lRedis.StringGetAsync(key);
+            return JsonHelper.BytesToObject<T>(lVaule);
         }
 
         public T Get<T>(string key)
@@ -71,24 +79,19 @@ namespace DotNetCore.Core.Services.Cache
             return JsonHelper.BytesToObject<T>(lVaule);
         }
 
-        public bool Remove(string key)
+        public async Task RemoveAsync(string key)
         {
             var lRedis = Instance.GetDatabase();
-            var lHasKey = lRedis.KeyExists(key);
+            var lHasKey = await lRedis.KeyExistsAsync(key);
             if (!lHasKey)
-                return true;
+                return;
 
-            return lRedis.SetRemove(key, lRedis.StringGet(key));
+            await lRedis.SetRemoveAsync(key, lRedis.StringGet(key));
         }
 
         public void Dispose()
         {
-            if (mDisposed) return;
-
-            //if (disposing)
-            //{
-            //}
-            mDisposed = true;
+               
         }
     }
 }

@@ -10,6 +10,7 @@
 
 using System.Security.Claims;
 using System.Threading.Tasks;
+using DotNetCore.Core.Base.Services.Log;
 using DotNetCore.Core.Base.Services.User;
 using DotNetCore.Domain.User;
 using IdentityModel;
@@ -21,10 +22,12 @@ namespace DotNetCore.SSO.Identity
     public class ResourceOwnerPasswordValidator : IResourceOwnerPasswordValidator
     {
         private readonly IUserService mUserService;
+        private readonly ILogService mLogService;
 
-        public ResourceOwnerPasswordValidator(IUserService userService)
+        public ResourceOwnerPasswordValidator(IUserService userService, ILogService logService)
         {
             mUserService = userService;
+            mLogService = logService;
         }
 
         public async Task ValidateAsync(ResourceOwnerPasswordValidationContext context)
@@ -41,8 +44,8 @@ namespace DotNetCore.SSO.Identity
             }
             else
             {
-
                 //验证失败dot
+                mLogService.Error(this,$"invalid error:{lResult.Message};username:{context.UserName}");
                 context.Result = new GrantValidationResult(TokenRequestErrors.InvalidGrant, "invalid custom credential");
             }
         }

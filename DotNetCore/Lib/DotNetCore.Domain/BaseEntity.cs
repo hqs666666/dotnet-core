@@ -3,11 +3,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DotNetCore.Domain
 {
-    public abstract class BaseEntity<T>
+    public abstract class BaseEntity<TKey>
     {
         [Key]
         [MaxLength(32)]
-        public string Id { get; set; }
+        public TKey Id { get; set; }
 
         [DataType(DataType.DateTime)]
         [Required]

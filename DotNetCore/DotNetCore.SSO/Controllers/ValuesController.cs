@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using DotNetCore.Core.Base.Services.Cache;
+using DotNetCore.Core.Base.Services.Log;
 using DotNetCore.Core.Base.Services.User;
 using DotNetCore.Core.Events;
 using DotNetCore.Domain.User;
@@ -8,41 +10,43 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DotNetCore.SSO.Controllers
 {
-    
+    [Route("api/values")]
     public class ValuesController : BaseController
     {
         private readonly IUserService mUserService;
         private readonly IRedisService mRedisService;
+        private readonly ILogService mLogService;
 
-        public ValuesController(IUserService userService, IRedisService redisService)
+        public ValuesController(IUserService userService, IRedisService redisService, ILogService logService)
         {
             mUserService = userService;
             mRedisService = redisService;
+            mLogService = logService;
         }
 
-        [Route("values/index")]
-        public JsonResult Index()
+        [HttpGet("index")]
+        public async Task<JsonResult> Index()
         {
             var lResult = mRedisService.Get<List<UserProfile>>("UserInfo");
             if (lResult == null)
             {
-                var lUser = mUserService.Get();
-                mRedisService.Set("UserInfo", lUser, 60);
+                var lUser = mUserService.GetList();
+                await mRedisService.SetAsync("UserInfo", lUser, 60);
                 lResult = lUser;
             }
             return Json(lResult);
         }
 
-        [Route("values/send")]
+        [HttpGet("send")]
         public JsonResult Send()
         {
             var lProducer = new EventProducer();
-            var lResult = mRedisService.Get<List<UserProfile>>("UserInfo");
+            var lResult = mRedisService.GetAsync<List<UserProfile>>("UserInfo");
             lProducer.Publisher(lResult);
             return Json("success");
         }
 
-        [Route("values/receive")]
+        [HttpGet("receive")]
         public JsonResult Receive()
         {
             var lProducer = new EventsConsumer();

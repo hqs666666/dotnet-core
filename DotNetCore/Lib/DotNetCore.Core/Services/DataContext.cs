@@ -19,6 +19,7 @@ namespace DotNetCore.Core.Services
             modelBuilder.Entity<UserProfile>().ToTable("sys_userprofile");
             modelBuilder.Entity<UserRole>().ToTable("sys_user_role");
             modelBuilder.Entity<Role>().ToTable("sys_role");
+            modelBuilder.Entity<Domain.Log.Log>().ToTable("sys_log");
             modelBuilder.Entity<PicRelate>().ToTable("pic_relate");
             modelBuilder.Entity<PicResource>().ToTable("pic_resource");
         }

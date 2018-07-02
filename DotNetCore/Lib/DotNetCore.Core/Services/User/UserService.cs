@@ -31,9 +31,14 @@ namespace DotNetCore.Core.Services.User
             mPicResourceService = picResourceService;
         }
 
-        public List<UserProfile> Get()
+        public List<UserProfile> GetList()
         {
             return mUserProfileDbSet.ToList();
+        }
+
+        public async Task<UserProfile> GetAsync(string userId)
+        {
+            return await mUserProfileDbSet.FindAsync(userId);
         }
 
         public async Task<ResultMsg> ValidUser(string userName, string password)
@@ -44,7 +49,7 @@ namespace DotNetCore.Core.Services.User
                 return CreateErrorMsg("用户名与密码不匹配");
 
             var lResult = CreateResultMsg();
-            lResult.Data = await mUserProfileDbSet.FindAsync(lUser.Id);
+            lResult.Data = await GetAsync(lUser.Id);
             return lResult;
         }
 
