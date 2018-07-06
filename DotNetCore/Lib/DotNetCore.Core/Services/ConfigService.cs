@@ -60,6 +60,7 @@ namespace DotNetCore.Core.Services
 
         #region Email
 
+        public string Name => AppSettings.Configuration["Email:Name"];
         public string Address => AppSettings.Configuration["Email:Address"];
         public string SecurityCode => AppSettings.Configuration["Email:SecurityCode"];
         public string SmtpHost => AppSettings.Configuration["Email:SMTPHost"];

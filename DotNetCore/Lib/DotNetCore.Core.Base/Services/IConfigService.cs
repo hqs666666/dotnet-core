@@ -49,7 +49,7 @@ namespace DotNetCore.Core.Base.Services
         #endregion
 
         #region Email
-
+        string Name { get; }
         string Address { get; }
         string SecurityCode { get; }
         string SmtpHost { get; }

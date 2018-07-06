@@ -26,9 +26,9 @@ namespace DotNetCore.Core.Services.Message
 
         public ResultMsg VaildEmail(UserDto user)
         {
-            var lEmail = new Email { Receiver = new List<string>(){ user.Email, "1845823808@qq.com", "1017782318@qq.com" },Subject = "账户激活邮件"};
+            var lEmail = new Email { Receiver = new List<string>(){ user.Email },Subject = "账户激活邮件"};
             lEmail.Body = $"<p>尊敬的用户：{user.NickName}</p>";
-            lEmail.Body += $"<p>请点击一下链接来激活您的账户：{mConfigService.AuthUrl}/api/values/active/{user.Id}</p>";
+            lEmail.Body += $"<p>请点击一下链接来激活您的账户：<a href='{mConfigService.AuthUrl}/api/values/active/{user.Id}'>hhhhhhhhhhhhhhh</a></p>";
             lEmail.Body += "<p>看到此邮件请不要慌张，这只是我RabbitMQ的测试而已，谢谢配合！</p>";
             lEmail.Body += "<p>该邮件为系统邮件，请勿回复</p>";
             return Send(lEmail);
@@ -40,7 +40,7 @@ namespace DotNetCore.Core.Services.Message
                 return CreateErrorMsg("邮箱不存在！");
 
             var lMessage = new MimeMessage();
-            lMessage.From.Add(new MailboxAddress(mConfigService.Address));
+            lMessage.From.Add(new MailboxAddress(mConfigService.Name,mConfigService.Address));
             foreach (var lItem in email.Receiver)
             {
                 lMessage.To.Add(new MailboxAddress(lItem));
@@ -64,7 +64,7 @@ namespace DotNetCore.Core.Services.Message
                 lSmtpClient.Authenticate(lAddress, lPassword);
                 lSmtpClient.Send(message); //发送邮件
                 lSmtpClient.Disconnect(true);
-                mLogService.Info(this, $"邮件发送成功,接收方：{message.To.Join(",")}");
+                //mLogService.Info(this, $"邮件发送成功,接收方：{message.To.Join(",")}");
                 return CreateResultMsg("邮件发送成功");
             }
             catch (Exception lEx)

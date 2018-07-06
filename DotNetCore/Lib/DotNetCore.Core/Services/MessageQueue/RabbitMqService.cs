@@ -212,7 +212,7 @@ namespace DotNetCore.Core.Services.MessageQueue
                 }
                 catch (Exception lEx)
                 {
-                    mLogService.Error(this,$"接收消息失败，queue：{queue}",lEx);
+                    mLogService.Error(this,$"接收消息成功，处理事件失败，queue：{queue}",lEx);
                 }
                 finally
                 {

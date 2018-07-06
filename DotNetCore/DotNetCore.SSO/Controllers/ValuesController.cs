@@ -50,8 +50,8 @@ namespace DotNetCore.SSO.Controllers
             var lUser = new UserDto
             {
                 Id = StringUtils.NewGuid(),
-                NickName = "刘城",
-                Email = "891795565@qq.com"
+                NickName = "彭俊龙",
+                Email = "727137732@qq.com"
             };
             mEventPublish.SendEmail(lUser);
             return Json("success");
