@@ -52,7 +52,7 @@ namespace DotNetCore.SSO.Controllers
             var lResult = await mUserService.ValidUser(login.UserName, login.Password);
             if (lResult.Result)
             {
-                var lUser = (UserProfile)lResult.Data;
+                var lUser = (UserDto)lResult.Data;
                 //写入cookie
                 AuthenticationProperties lProps = null;
                 if (login.RememberMe)
@@ -70,11 +70,11 @@ namespace DotNetCore.SSO.Controllers
         }
 
         [HttpPost("register")]
-        public IActionResult Register([FromBody]RegisterDto register)
+        public async Task<IActionResult> Register([FromBody]RegisterDto register)
         {
             if (!register.IsVaild)
                 return Ok(CreateErrorResultMsg(ApiErrorCode.Exception, "error"));
-            var lResult = mUserService.Register(register);
+            var lResult = await mUserService.Register(register);
             if (lResult.Result)
                 return Ok(CreateResultMsg(lResult.Message));
             return Ok(CreateErrorResultMsg(ApiErrorCode.Exception, lResult.Message));

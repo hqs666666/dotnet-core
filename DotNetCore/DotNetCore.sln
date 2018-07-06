@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetCore.Core.Base", "Lib
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetCore.Domain", "Lib\DotNetCore.Domain\DotNetCore.Domain.csproj", "{B9434EC3-1F6D-4C7D-94A4-54E210D1FC38}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetCore.Manage", "DotNetCore.Manage\DotNetCore.Manage.csproj", "{85C5046A-BCEC-4383-8BF3-D20508295D88}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetCore.Manage", "DotNetCore.Manage\DotNetCore.Manage.csproj", "{85C5046A-BCEC-4383-8BF3-D20508295D88}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

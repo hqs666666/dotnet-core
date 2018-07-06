@@ -10,6 +10,7 @@
 using System;
 using System.Text;
 using DotNetCore.Core.Base.Services;
+using DotNetCore.Core.Base.Services.Message;
 using DotNetCore.FrameWork.Helpers;
 using DotNetCore.FrameWork.Utils;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,6 +21,13 @@ namespace DotNetCore.Core.Events
 {
     public class EventsConsumer
     {
+        private readonly IEmailService mEmailService;
+
+        public EventsConsumer(IEmailService emailService)
+        {
+            mEmailService = emailService;
+        }
+
         public T Subscribe<T>()
         {
             using (var lConnection = Factory.CreateConnection())
@@ -45,21 +53,19 @@ namespace DotNetCore.Core.Events
                 {
                     //事件基本消费者
                     var lConsumer = new EventingBasicConsumer(lChannel);
-
                     //接收到消息事件
                     lConsumer.Received += (ch, ea) =>
                     {
                         var lMessage = Encoding.UTF8.GetString(ea.Body);
 
                         //发布消息后，该方法会主动接收到消息，此处可以处理一些事
-
-                        //确认该消息已被消费
-                        lChannel.BasicAck(ea.DeliveryTag, false);
-
+                        var lResult = mEmailService.Send(null);
+                        if (lResult.Result)
+                            //确认该消息已被消费
+                            lChannel.BasicAck(ea.DeliveryTag, false);
                     };
                     //启动消费者 设置为手动应答消息
-                    lChannel.BasicConsume("queueName", false, lConsumer);
-                    Console.WriteLine("消费者已启动");
+                    lChannel.BasicConsume(QueueName, false, lConsumer);
                 }
             }
         }

@@ -31,5 +31,22 @@ namespace DotNetCore.Core.Base
 
         #endregion
 
+        #region ExchangeName
+
+        public const string SEND_EMAIL_EXCHANGE_NAME = "Exchange-Email";
+
+        #endregion
+
+        #region QueueName
+
+        public const string SEND_EMAIL_QUEUE_NAME = "Queue-Email";
+
+        #endregion
+
+        #region RoutingKey
+
+        public const string SEND_EMAIL_ROUTING_KEY = "RoutingKey-Email";
+
+        #endregion
     }
 }

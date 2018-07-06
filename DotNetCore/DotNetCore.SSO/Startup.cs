@@ -1,8 +1,7 @@
 ﻿using System;
-using DotNetCore.Core.Base.Services;
+using AutoMapper;
 using DotNetCore.Core.Services;
 using DotNetCore.FrameWork.Filter;
-using DotNetCore.FrameWork.Middleware;
 using DotNetCore.FrameWork.Utils;
 using DotNetCore.SSO.Identity;
 using Microsoft.AspNetCore.Builder;
@@ -10,7 +9,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 
 namespace DotNetCore.SSO
 {
@@ -49,10 +47,10 @@ namespace DotNetCore.SSO
             //add DI
             services.AddDependencyRegister();
             services.AddTfDI();
+            services.AddAutoMapper(typeof(Startup));
 
             services.AddMvc(options =>
                     {
-                        //全局异常过滤器 与 ExceptionMiddleware 二选一
                         options.Filters.Add<ExceptionFilter>();
                         options.Filters.Add<CustomerAuthorizationFilter>();
                     })
@@ -68,7 +66,7 @@ namespace DotNetCore.SSO
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -79,9 +77,6 @@ namespace DotNetCore.SSO
             app.UseCors("api");
 
             app.UseIdentityServer();
-
-            //异常处理中间件
-            //app.UseMiddleware<ExceptionMiddleware>();
 
             //依赖注入扩展方法，实现简单的隐式依赖注入
             app.UseTfDI();

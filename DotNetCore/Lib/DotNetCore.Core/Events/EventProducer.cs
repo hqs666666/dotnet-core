@@ -48,7 +48,7 @@ namespace DotNetCore.Core.Events
             Password = ConfigService.RabbitMqPwd,
             HostName = ConfigService.RabbitMqHostName
         };
-        private readonly string ExchangeName = "exchange";
+        private readonly string ExchangeName = "email";
         private readonly string QueueName = "queue";
         private readonly string RouteKey = "routeKey";
     }

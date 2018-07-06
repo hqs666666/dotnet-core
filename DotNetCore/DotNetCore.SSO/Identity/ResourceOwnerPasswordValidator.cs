@@ -8,8 +8,10 @@
  *
  ****************************************************************************/
 
+using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using DotNetCore.Core.Base.DTOS.User;
 using DotNetCore.Core.Base.Services.Log;
 using DotNetCore.Core.Base.Services.User;
 using DotNetCore.Domain.User;
@@ -36,7 +38,7 @@ namespace DotNetCore.SSO.Identity
             var lResult = await mUserService.ValidUser(context.UserName, context.Password);
             if (lResult.Result)
             {
-                var lUser = (UserProfile)lResult.Data;
+                var lUser = (UserDto)lResult.Data;
                 context.Result = new GrantValidationResult(
                     subject: lUser.Id,
                     authenticationMethod: "custom",
@@ -45,12 +47,12 @@ namespace DotNetCore.SSO.Identity
             else
             {
                 //验证失败dot
-                mLogService.Error(this,$"invalid error:{lResult.Message};username:{context.UserName}");
+                mLogService.Error(this, $"invalid error:{lResult.Message};username:{context.UserName}");
                 context.Result = new GrantValidationResult(TokenRequestErrors.InvalidGrant, "invalid custom credential");
             }
         }
         //可以根据需要设置相应的Claim
-        private Claim[] GetUserClaims(UserProfile user)
+        private Claim[] GetUserClaims(UserDto user)
         {
             return new Claim[]
             {

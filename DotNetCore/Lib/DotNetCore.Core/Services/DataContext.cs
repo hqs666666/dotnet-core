@@ -34,7 +34,7 @@ namespace DotNetCore.Core.Services
             return base.SaveChanges();
         }
 
-        public new virtual DbSet<TEntity> Set<TEntity>() where TEntity : class
+        public new virtual DbSet<TEntity> Set<TEntity>() where TEntity : class 
         {
             return base.Set<TEntity>();
         }
