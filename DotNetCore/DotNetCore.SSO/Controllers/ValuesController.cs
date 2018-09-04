@@ -41,7 +41,7 @@ namespace DotNetCore.SSO.Controllers
                 await mRedisService.SetAsync("UserInfo", lUser, 60);
                 lResult = lUser;
             }
-            return Json(lResult);
+            return new JsonResult(lResult);
         }
 
         [HttpGet("send")]
@@ -54,14 +54,14 @@ namespace DotNetCore.SSO.Controllers
                 Email = "727137732@qq.com"
             };
             mEventPublish.SendEmail(lUser);
-            return Json("success");
+            return new JsonResult("success");
         }
 
         [HttpGet("receive")]
         public JsonResult Receive()
         {
             mEventSubscribe.SendEmail();
-            return Json("ok");
+            return new JsonResult("ok");
         }
     }
 }

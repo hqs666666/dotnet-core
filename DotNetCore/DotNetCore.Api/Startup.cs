@@ -1,9 +1,9 @@
 ﻿using DotNetCore.Core.Services;
-using DotNetCore.FrameWork.Filter;
 using DotNetCore.FrameWork.Middleware;
 using DotNetCore.FrameWork.Utils;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -31,7 +31,7 @@ namespace DotNetCore.Api
                     });
 
             //add mysql
-            services.AddDbContext<DataContext>(options => options.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<DataContext>(options => options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
 
             //add cors
             services.AddCors(options =>
@@ -50,7 +50,7 @@ namespace DotNetCore.Api
                     .AddAuthorization()
                     .AddJsonOptions(options => options.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss");
 
-            services.AddMvc();
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -61,7 +61,7 @@ namespace DotNetCore.Api
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
             }
-          
+
             app.UseAuthentication();
 
             app.UseMiddleware<ExceptionMiddleware>();
@@ -72,6 +72,7 @@ namespace DotNetCore.Api
 
             app.UseStaticFiles();
 
+            app.UseHttpsRedirection();
             app.UseMvc();
         }
     }

@@ -6,6 +6,7 @@ using DotNetCore.FrameWork.Utils;
 using DotNetCore.SSO.Identity;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -33,7 +34,7 @@ namespace DotNetCore.SSO
                     .AddProfileService<ProfileService>();
 
             //add mysql
-            services.AddDbContext<DataContext>(options => options.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<DataContext>(options => options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
 
             //add cors
             services.AddCors(options =>
@@ -55,8 +56,8 @@ namespace DotNetCore.SSO
                         options.Filters.Add<CustomerAuthorizationFilter>();
                     })
                     //解决时间格式包含 T 字符
-                    .AddJsonOptions(options => options.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss");
-
+                    .AddJsonOptions(options => options.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss")
+                    .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             //添加Session 服务
             services.AddSession(options =>
             {

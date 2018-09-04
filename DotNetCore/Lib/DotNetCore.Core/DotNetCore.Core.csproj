@@ -1,20 +1,21 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="log4net" Version="2.0.8" />
-    <PackageReference Include="MailKit" Version="2.0.4" />
-    <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="8.0.11" />
-    <PackageReference Include="RabbitMQ.Client" Version="5.0.1" />
+    <PackageReference Include="MailKit" Version="2.0.6" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.1.1" />
+    <PackageReference Include="RabbitMQ.Client" Version="5.1.0" />
+    <PackageReference Include="StackExchange.Redis" Version="1.2.6" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\DotNetCore.Framework\DotNetCore.Framework.csproj" />
     <ProjectReference Include="..\DotNetCore.Core.Base\DotNetCore.Core.Base.csproj" />
     <ProjectReference Include="..\DotNetCore.Domain\DotNetCore.Domain.csproj" />
-    <ProjectReference Include="..\DotNetCore.FrameWork\DotNetCore.FrameWork.csproj" />
   </ItemGroup>
 
 </Project>

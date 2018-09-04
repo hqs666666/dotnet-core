@@ -18,19 +18,19 @@ namespace DotNetCore.Domain.User
         [MaxLength(256)]
         [DataType(DataType.Password)]
         [Required]
-        [Column(TypeName = "varchar")]
+        //[Column(TypeName = "varchar")]
         public string PasswordHash { get; set; }
 
         [MaxLength(11)]
         [DataType(DataType.PhoneNumber)]
         [Required]
-        [Column(TypeName = "varchar")]
+        //[Column(TypeName = "varchar")]
         public string PhoneNumber { get; set; }
 
         [MaxLength(50)]
         [Required]
         [DataType(DataType.EmailAddress)]
-        [Column(TypeName = "varchar")]
+        //[Column(TypeName = "varchar")]
         public string Email { get; set; }
 
         [Required]
