@@ -54,7 +54,7 @@ namespace DotNetCore.SSO.Controllers
             {
                 var lUser = (UserDto)lResult.Data;
                 //写入cookie
-                AuthenticationProperties lProps = null;
+                AuthenticationProperties lProps = null;    
                 if (login.RememberMe)
                 {
                     lProps = new AuthenticationProperties
